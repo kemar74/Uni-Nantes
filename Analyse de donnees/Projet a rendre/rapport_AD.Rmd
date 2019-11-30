@@ -1,0 +1,325 @@
+---
+title: "Rapport d'analyse de données"
+subtitle: "Mutation de gènes chez les patients affectés par la maladie X"
+author: 
+- "HARTLEY Marc"
+- "HERVÉ Victor"
+date: "03/11/2019"
+output:
+  pdf_document: 
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+    fig_caption: TRUE
+  html_document: 
+    fig_caption: yes
+    highlight: textmate
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+header-includes:
+ \usepackage{float}
+fontsize: 24
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+# knitr::opts_chunk$set(cache = T)
+knitr::opts_chunk$set(comment = NULL)
+knitr::opts_chunk$set(fig.pos = 'H')
+knitr::opts_chunk$set(fig.align = 'center')
+knitr::opts_chunk$set(out.height = "40%")
+knitr::opts_chunk$set(fig.cap = " ")
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(error = FALSE)
+
+
+source("Tentative.R")
+table <- recuperer_donnees_en_matrice("Projet M1 AD 1920.csv", transpose=T)
+pca <- nantes_pca(table, numberOfAxis = 2)
+```
+
+
+\newpage
+# Introduction
+
+Notre jeu de données présente 40 patients. Les 20 premiers sont en bonne santé alors que les autres sont malades. Les patients sont représentés en colonnes et les gènes en lignes.
+
+
+Nous savons qu'il existe de nombreuses maladies dues à l'expression des gènes. On dénombre entre 6000 et 8000 maladies génétiques dans le monde. Leurs causes ainsi que leurs symptômes sont divers en variés. Ces maladies peuvent être héréditaires ou simplement dues à des mutatations génétiques dans la vie adulte. Ainsi la modification d'un gène peut provoquer des protéines déficientes et le fonctionnement anormal de nombreuses cellules. Dans 80% des cas, une maladie génétique serait due à l'altération d'une séquence codante d'un gène. Le but de notre étude est de trouver les gènes ou les groupes responsables des maladies sur nos patients par une analyse en composantes principales (ACP ou PCA en anglais).
+
+
+# Description des individus 
+
+Sur nos quarante individus, nous remarquons que chaque individu a des gènes qui s'expriment plus que d'autres. Sur le graphique nos pouvons voir que ces gènes sont mis en avant par des valeurs atypiques qui se retrouvent aux extrémités des boîtes à moustaches. 
+
+```{r echo = FALSE, fig.align='center', fig.cap = "Representation des genes par individus"}
+boxplot(t(pca$originalTable), col=c(rep("green",20), rep("red", 20)), main="Valeurs des gènes pour chaque individu", sub="Boites à moustaches")
+```
+
+Cependant, l'expression des gènes chez les individus sains diffèrent de leurs expressions par rapport aux individus qui sont malades : 
+
+```{r echo = FALSE, fig.align='center', fig.cap = "Representation des gènes pour les individus sains"}
+boxplot(t(pca$originalTable[1:20,]), col="green", main="Valeurs des gènes pour chaque patient sain", sub="Boites à moustache", ylim=c(min(pca$originalTable[1:20,]), max(pca$originalTable[1:20,])))
+```
+
+En effet nous pouvons remarquer que nous avons environ autant de gènes qui sont sur-exprimés que de gènes sous-exprimés sur l'ensemble des individus sains. Alors que pour les individus malades nous avons beaucoup plus de gènes qui sont sur-exprimés comme le montre le graphique ci-dessous.
+
+```{r echo = FALSE, fig.align='center', fig.cap = "Representation des gènes pour les individus malades"}
+boxplot(t(pca$originalTable[21:40,]), col="red", main="Valeurs des gènes pour chaque patient malade", sub="Boites à moustache", ylim=c(min(pca$originalTable[21:40,]), max(pca$originalTable[21:40,])))
+```
+
+C'est pour cela que les boites à moustaches des individus malades ont une médiane tirée vers le haut par rapport aux individus sains. 
+
+Nous pouvons premièrement conjecturer que les deux groupes d'individus sont alors différenciés par certains gènes. Nous allons essayer de décrire ces gènes par la suite. 
+
+
+# Description des gènes 
+
+Ici nous pouvons remarquer que la distribution de l'expression des gènes est étendue de -4 à 4.
+
+
+```{r echo = FALSE, fig.align='center', fig.cap = "Distribution des gènes des individus sains comparée à la loi normale"}
+# library(moments)
+hist(x = table[1:20,], col="green", freq = F, sub=paste("Coef. d'asymétrie = ", round(skewness(table[1:20,]), 3), " -- Coef. d'applatissement = ", round(kurtosis(as.vector(table[1:20,])), 3)), xlab="Valeur des gènes", ylab="Densité", main = "Distribution de la valeur des gènes des individus sains")
+curve(dnorm(x), from = -4, to = 4, add=T, col="red", lwd=3)
+```
+
+Nous pouvons supposer à première vue que que l'expression des gènes est distribuée selon une loi Gaussienne qui donne une bonne répartition de la distribution. En effet, le coefficient d'asymétrie et le coefficient d'applatissement se rappochent de 0.  
+Les valeurs d'expression des gènes sont correctement distribuées et ne permettent pas de distinguer un individu sain d'un individu malade.
+Ce n'est pas le cas pour les individus malades ci-dessous.
+
+```{r echo = FALSE, fig.align='center', fig.cap = "Distribution des gènes des individus malades comparée à la loi normale"}
+hist(x = table[21:40,], col="red", freq = F, sub=paste("Coef. d'asymétrie = ", round(skewness(table[21:40,]), 3), " -- Coef. d'applatissement = ", round(kurtosis(as.vector(table[21:40,])), 3)), xlab="Valeur des gènes", ylab="Densité", main = "Distribution de la valeur des gènes des individus malades")
+curve(dnorm(x), from = -4, to = 6, add=T, col="green", lwd=3)
+```
+
+En effet, nous remarquons que la distribution des gènes est disymétrique vers la droite lorque l'individus est malade. Nous pouvons alors penser que certains gènes sont sur-exprimés pour un individu malade. Notre étude est alors de determiner quels sont les gènes responsables des maladies. L'ACP nous permettra de répondre à cette question en projetant l'information dans un plan en dimension 2 et en mettant en valeur les groupes grace aux corrélations.
+
+\newpage
+# Analyse sous R
+Afin de réaliser notre analyse, nous avons eu besoin de réaliser un programme sous le langage R.
+Le code source du programme vous est mis à disposition en annexe. Nous allons voir ensemble comment le faire fonctionner afin de poursuivre l'analyse de nos patients.
+
+## Présentation du programme
+Nous avons souhaité écrire ce programme afin qu'il soit le plus général possible, réutilisable pour des cas différents. 
+Nous avons essayé de réaliser des fonctions simples à utiliser, complet et graphiquement clair.  
+D'autres bibliothèques sont capable de réaliser des ACP (ade4, FactoMineR, ...), elles nous permettrons alors de verifier que nous résultats sont corrects et nous pouvons nous en inspirer pour restituer les resultats de nos fonctions.  
+
+## Utilisation
+Notre objectif est de rendre l'utilisation de notre programme le plus simple possible.  
+Pour utiliser le programme, il faut suivre deux étapes :
+
+### Initialisation :
+La première étape est l'initialisation. C'est le calcul de l'ACP à proprement parler. Elle fonctionne très simplement, en voici sa signature :  
+
+```
+nantes_pca <- function(table, center=T, scale=T, numberOfAxis=NULL, 
+    additionalVariables=NULL, additionalIndividus=NULL)
+```
+
+On a donc un seul argument obligatoire, c'est la matrice des données brutes. Il est bien sûr possible de réaliser l'analyse en centrée-normée. Ensuite il est possible de choisir le nombre d'axes (ou composantes) à retenir pour l'analyse. Par défaut, le programme tentera de retrouver le nombre d'axes de manière automatique. Nous pouvons aussi ajouter qu'il est possible d'indiquer que certains individus et/ou certaines variables sont supplémentaires.  
+
+Au retour de cette fonction, on a une liste avec un maximum d'informations : coordonnées, contribution et qualité des variables/individus, éléments de la SVD (Singular Values Decomposition, ou Décomposition en Valeurs Singulières en français), soit les matrices U et V et les valeurs propres.  
+
+Grace à ce résultat, nous pouvons passer à la deuxième étape : la représentation.  
+
+### Représentation :  
+Nous avons souhaité réunir tous les résultats que nous avons eu besoin lors des analyses étudiées en cours. Chaque représentation est réalisée par une fonction differente, mais elles sont toutes réunies dans cette fonction : 
+
+```
+displayFullSummary <- function(pca, useOriginalTable = F, displayLimit = NULL, 
+    colors = NULL, beLike = NULL, numberOfClasses = 2, 
+    variableType = "variable")
+```
+
+Encore une fois, nous avons misé sur le simple. ```pca``` est le résutat de la première fonction, c'est encore une fois le seul argument obligatoire.  
+Ensuite nous avons quelques moyens de personnaliser notre analyse : 
+- ```useOriginalTable``` nous propose de réaliser une analyse univariée sur les données avant qu'elles soient transformées (centrées-réduites) ou non.  
+- ```displayLimit``` est nous permet de réduire la taille de l'affichage lors de la présentation des coordonnées/contributions/qualités des variables et des individus.  
+- ```colors``` colore le graphique des individus. Elle peut être utilisée afin de determiner le nombre de groupes lors de la classification (ex : si on colore les individus en rouge, bleu et noir, cela sera considéré comme 3 groupes). Il est aussi possible de lui donner la valeur "auto" pour que les couleurs se répartissent en fonction du nombre de classes définies par l'argument ```numberOfClasses```.  
+- ```beLike``` adapte les representations pour ressembler à d'autres bibliothèques. La représentation par défaut ressemble à celle d'ADE4, mais en passant "FactoMineR" en argument, nous réorientons les graphes pour être identique aux leurs.  
+- ```numberOfClasses``` définit le nombre de groupes pour la classification.  
+- ```variableType``` modifie le nom des graphiques "globaux".
+
+Il suffit de lancer cette fonction pour voir apparaitre tous les resultats nécessaires à une bonne analyse en composantes principales.  
+
+## Resultats
+Voyons à quoi peut ressembler cette analyse avec un exemple : CSP.  
+Lançons l'initialisation :  
+
+```{R}
+table <- recuperer_donnees_en_matrice("csp.txt", entete = T)
+pca <- nantes_pca(table)
+```
+
+Voyons à quoi peut ressembler les representations :  
+
+```{R, fig.pos="H", fig.cap=NULL}
+par(mfrow=c(1, 2))
+displayFullSummary(pca, colors = "auto", numberOfClasses = 3, variableType = "nourriture")
+```
+
+
+On a donc, par ordre chronologique :  
+- Un graphique "global" qui represente toutes les variables sous forme de boite à moustache. (fonction ```displayGlobal()```)  
+- Un éboulis de valeurs propres, utilisé pour définir le nombre de composantes à sélectionner. (fonction ```displayScreePlot()```)  
+- Une matrice de corrélation des variables. Il est interressant de savoir que lorsqu'il y a de nombreuses variables, la matrice est représentée graphiquement, comme nous le verrons dans ce rapport lorsque nous analysons 1000 variables. (fonction ```displayCorrelation()```)  
+- Le cercle de corrélation afin de voir graphiquement la contribution des variables sur les composantes principales. (fonction ```displayVariables()```)  
+- Le graphique des individus qui représente la projection de chaque individus sur les composantes. (fonction ```displayIndividus()```)  
+- Le détail des coordonnées, contributions et qualité de représentation des variables et des individus selon chaque axes. On indique les plus grosses contributions sur chaque axe. (fonctions ```displayInertieIndividus()``` et ```displayInertieVariables()```)  
+
+
+## Comparaison avec l'existant
+Il existe quelques autres bibliothèques permettant de réaliser des ACP. Nous avons ici vérifié nos résultats avec les bibliothèques ADE4 et FactoMineR. Nous avons essayé de comparer les valeurs retrouvées avec celles des autres bibliothèques, et ce par ces fonctions :  
+
+```
+comparaisonAvecADE4(table, center = T, scale = T, ind.sup = NULL, var.sup = NULL, 
+                    numberOfAxis = 5)
+comparaisonAvecFactoMineR(table, center = T, scale = T, ind.sup = NULL, 
+                    var.sup = NULL, numberOfAxis = 5)
+```
+Une serie de tests des differentes valeurs nous permet de savoir si tout est identique ou sinon les valeurs qui diffèrent sont affichées à l'écran. Par chance, nous n'avons jusque là aucune difference avec ces deux bibliothèques :  
+
+```{R}
+comparaisonAvecADE4(table)
+comparaisonAvecFactoMineR(table)
+```
+
+
+## Limites
+Les limites actuelles de ces fonctions sont :  
+- mauvaise gestion des valeurs ```NA```
+- pas encore de gestion des colonnes qualitatives
+
+Toutes ces limites ont comme futur d'être corrigées, mais au jour de notre rendu de rapport, elles sont présentes. Pour la suite de cette analyse, cela ne nous contraindra pas.
+
+\newpage
+# L'ACP appliquée à notre étude génétique
+
+```{R, echo=F}
+table <- recuperer_donnees_en_matrice("Projet M1 AD 1920.csv", transpose=T)
+pca <- nantes_pca(table, numberOfAxis = 2)
+```
+
+Nous avons commencé à faire une ACP sur toutes nos variables en même temps. Cependant, l'inertie de nos points se retrouvent au centre de notre cercle de corrélation et nos axes factoriels ne représentent pas bien la réalité de notre étude. 
+
+En effet, l'inertie de la première valeur propre synthétise 8,11% de l'information. La deuxième valeur propre est très inférieure à la première (3,45%). Selon la règle du coude, seul le premier axe factoriel est choisi. De plus ce choix est precisé par l'étude en elle-même où l'on recherche qu'un seul axe mettant en valeur les individus malades
+
+```{r echo = FALSE, fig.align='center', fig.cap = "Ébouli de valeurs propres issues de notre fonction R"}
+displayScreePlot(pca)
+```
+
+Dans un soucis d'affichage dans nos graphiques, nous utiliserons 2 axes, bien que le second ne nous semble pas expliquer quoi que ce soit.
+
+Après avoir utilisé l'ACP, on remarque que les individus sont divisés en 2 groupes. On retrouve les sains à gauche de l'axe 1 et les individus malades à droite (figure 7).
+De plus, sur le cercle de corrélation (figure 8), on peut voir un groupe de gènes qui se démarquent vers la droite avec un cosinus supérieur à 0.5. On pense que c'est l'expression de ces gènes qui déterminent si un individu est malade ou sain.On peut de plus remarquer un gros groupe de variables presque totalement corrélées entre elles, representé par le carré rouge sur le matrice de corrélation "graphique" (figure 9).
+
+```{R, fig.cap = "Variables représentées dans un cercle de corrélation"}
+displayVariables(pca, useArrows = F, colorWeakValues = 0.6)
+```
+```{R, Y1, fig.cap = "Projection des individus sur les 2 axes principaux, avec une classification K-means"}
+displayClasses(pca, colors=c("green", "red"))
+```
+```{R, fig.cap = "Rendu graphique de la matrice de la corrélation. Chaque pixel représente une valeur allant de 0 (jaune) à 1 (rouge)"}
+displayCorrelation(pca)
+```
+
+## Conclusion de l'ACP
+On a bien mis en évidence sur notre cercle de corrélation un groupe de gènes (en rouge) dont l'expression représenterait l'apparition de la maladie. Néanmoins, l'axe 1 projete trop peu d'informations (inertie = 8,11%) donc nous ne pouvons pas savoir si l'expression de ces gènes determine si un individu est sain ou malade.
+
+\newpage
+# Analyse supplémentaire
+Sur notre première ACP, l'inertie de l'axe 1 est peu importante (8%) et on retrouve beaucoup de gènes vers le centre de l'ACP. Ces gènes ne résument donc pas l'information disponible; bien qu'on puisse penser que ces gènes déterminent si un individu est malade ou non, l'inertie de l'axe 1 est trop faible pour que cela soit une certitude.
+L'ACP contient trop de variables inutiles.
+
+```{R, echo=F, fig.cap="Représentation des gènes par individu, séparée entre individus sains (gauche) et malades (droite)"}
+boxplot(t(table), col=c(rep("green", 20), rep("red", 20)))
+abline(v = 20.5)
+```
+
+On s'interresse alors aux valeurs atypiques de ce graphique (c'est à dire les valeurs en dehors de la boite à moustaches). Les patients malades ont beaucoups plus de gênes qui sont sur-exprimés par rapport aux individus sains
+Nous retrouvons donc ce resultat :
+
+```{R}
+variables_extremes <- apply(as.matrix(pca$var$coord[, 1]), 1, function(col){ min(abs(col)) > 0.5 })
+table_extreme <- table[,variables_extremes]
+print(paste("Nous considérons ", ncol(table_extreme), " variables 'atypiques'", collapse=""))
+```
+
+On a donc réalisé une ACP en ne considérant seulement ces variables-ci.  
+Voici le resultat ci-dessous.
+
+```{R, fig.cap="Ébouli de valeurs propres limitées aux gènes dont les valeurs sont 'atypiques'"}
+pca_extreme <- nantes_pca(table_extreme, numberOfAxis = 2)
+displayScreePlot(pca_extreme)
+```
+
+On voit que dans l'éboulis de valeurs propres, la deuxième valeur propre est beaucoup moins significative que la première. 
+
+```{R, fig.cap="Matrice de corrélation. Nous remarquons la forte corrélation de presque toutes les valeurs"}
+displayCorrelation(pca_extreme)
+```
+
+
+De plus toutes ces variables sont fortement corrélées entre elles. Il est aussi possible de remarquer cela avec le cercle des corrélations car on peut voir que toutes les flèches sont rapprochées sur l'axe 1.
+
+
+Les hypothèses posées par rapport à la première étude sont verifiées. En effet, seul le premier axe est choisi par la règle du coude et par notre étude. De plus, il représente 51% de l'information disponible et la projection des individus malades ci-dessous nous permet de verifier que la corrélation et la sur-expression des gènes sur notre ACP designe bien les individus malades.
+
+```{R, fig.cap="Representation des gènes sur le cercle des corrélations"}
+displayVariables(pca_extreme, useArrows = F)
+```
+
+```{R, Y2, fig.cap="Projection des individus sur les 2 axes principaux de la PCA des valeurs atypiques, avec classification K-means"}
+displayClasses(pca_extreme, colors=c("green", "red"))
+```
+
+
+En appliquant une fonction de classification non-suppervisée par "k-means", on peut bien voir que les deux groupes se distinguent. 
+
+En moyenne, on a dans ces groupes une variance intra-groupe de 8,5 et une variance inter-groupe de 14.
+
+```{R, Y3, fig.cap="Représentation des gènes, avec classification K-means. On voit bien une séparation entre gènes neutres et gènes liés à la maladie"}
+displayClasses(nantes_pca(t(table), numberOfAxis = 2), colors=c("green", "red"))
+```
+D'après la figure 15 represantant une classification type K-means sur les gènes, on voit une nette séparation entre les deux groupes avec le barycentre des gènes liés à la maladie sur la droite de l'axe 1 contre le barycentre des gènes neutres au centre du graphique. La variance intra-groupe est bien plus faible que la variance inter-groupe, l'algorithme du K-means a bien retrouvé nos deux groupes de gènes en differenciant les gènes dont l'expression determine la presence de la maladie ou au contraire, les gènes dont l'expression ne permettent pas de determiner qu'un individu est malade ou non (gènes neutres).
+
+Pour plus de précision sur la correlation entre les variables et l'axe 1, on a representé les contributions des variables ci-dessous.
+
+```{R}
+displayInertiaVariables(pca, displayLimit = 2, numberOfAxis = 1)
+```
+
+On peut donc en conclure que ce sont les gènes ayant les plus grosses contributions à l'axe 1 qui sont responsables (ou liées) à la maladie : 
+
+```{R, echo=F, result="asis"}
+library(knitr)
+genesResponsables <- pca$var$contrib[,1][pca$var$coord[,1] > 0]
+genesResponsables <- as.integer(names(genesResponsables[genesResponsables > 1/pca$nbVar]))
+kable(matrix(sort(genesResponsables)[1:130], ncol = 10), caption = "Gènes responsables à la maladie")
+genesAntiResponsables <- pca$var$contrib[,1][pca$var$coord[,1] < 0]
+genesAntiResponsables <- as.integer(names(genesAntiResponsables[genesAntiResponsables > 1/pca$nbVar]))
+kable(matrix(sort(genesAntiResponsables)[1:20], ncol = 10), caption = "Gènes 'inversement' responsables à la maladie")
+```
+
+
+# Conclusion
+Aussi bien à l'aide de notre ACP que notre classification K-means, on a su trouver les gènes responsables des maladies dans notre échantillon de 40 individus. 
+On peut très fortement supposer que les gènes liés à l'apparition de la maladie chez les patients sont numérotés de 11 à 30 et de 501 à 600, et quelques autres gènes supplémentaires. 
+On trouve aussi quelques gènes qui semblent plus forts chez les patients sains, mais leur importance et leur effectif sont bien inférieurs aux précédents. Il peut néanmoins être utile de s'y interesser car ils peuvent peut-être être une solution de soins face à la maladie.
+Les méthodes utilisées (aussi bien en prenant en compte la décomposition de la variance et la corrélation entre les individus) ont toutes été efficaces pour le problème posé.
+
+\newpage
+# Annexes
+
+## Bibliographie
+http://geai.univ-brest.fr/
+https://fr.wikipedia.org/wiki/Kurtosis
+https://bookdown.org/
+https://www.rdocumentation.org/
+https://genetique-medicale.fr/
+
+## Code complet
+
+```{R, code = readLines("Tentative.R"), echo=T}

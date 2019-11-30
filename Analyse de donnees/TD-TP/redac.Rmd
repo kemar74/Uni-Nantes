@@ -1,0 +1,74 @@
+---
+title: "Analyse de données"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Notre jeu de données présente 40 patients. Les 20 premiers sont en bonnes santés alors que les autres sont gravements malades. Les patients sont reprÃ©sentÃ©s en colonnes et les gênes sont reprÃ©sentés.
+
+
+Nous savons qu'il existe de nombreuses maladies dues  l'expression des gênes. On en dénombre entre 6000 et 8000 maladies génétiques dans le mondes. Leurs causes ainsi que leurs symptômes sont diverses en variés. Ses maladies peuvent être héréditaires ou simplement dues à des mutatations génétiques dans la vie adulte. Ainsi la modification d'un gêne peut provoquer des protéines déficientes et le fonctionnement anormal de nombreuses cellules. Dans 80% des cas, un maladie génétiquesserait due à l'altération d'une séquence codante d'un gêne. Le but de notre études est de trouver les gênes ou les groupes responsables des maladies sur nos patients par une analyse en composante principale. 
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. 
+
+## Description des individus 
+
+Sur nos quarantes, nous remarquons que chaque individu a des gênes qui s'expriments plus que d'autres et d'autres qui s'expriment mois bien. Sur le graphique nos pouvons que ces gênes sont mis en avant par leurs valeurs atypiques qui se retrouvent aux extrémités des boîtes à moustache. 
+```{r echo = FALSE,, out.width = "100%", out.height= "100%", fig.align='center'}
+knitr::include_graphics("C:/Users/viche/Pictures/gene.png")
+```
+
+
+Cependant, l'expression des gènes chez les individus sains diffèrent de leurs expressions par rapport aux individus qui sont malades. 
+
+
+```{r echo = FALSE,, out.width = "100%", out.height= "100%", fig.align='center'}
+knitr::include_graphics("C:/Users/viche/Pictures/boxplotsains.png")
+```
+
+En effet nous pouvous remarquer que nous avons quasiment autant de gênes qui sont sur-exprimés et sous exprimés chez les individus sains. Alors que pour les individus malades nous avons beaucoups plus de gènes qui sont sur-exprimés comme le montre l'image ci-dessous.
+
+
+```{r echo = FALSE,, out.width = "100%", out.height= "100%", fig.align='center'}
+knitr::include_graphics("C:/Users/viche/Pictures/boxplotmalade.png")
+```
+
+C'est pour cela que les boites à moustaches des individus malades ont une médiane tirée vers le haut par rapport aux individus sains. 
+
+Nous pouvons premièrement conlure que les deux groupes d'individus sont alors différenciés par certains gènes. Nous allons essayer de décrire ces gènes par la suite. 
+
+## Description des gènes 
+
+Ici nous pouvons remarquer que la distribution de l'expression est étendue de 1 à 4.
+
+
+```{r echo = FALSE,, out.width = "100%", out.height= "100%", fig.align='center'}
+knitr::include_graphics("C:/Users/viche/Pictures/Rplot01.png")
+```
+
+Nous pouvons supposer à première vue que que l'expression des gènes est distribuer selon une loi Gaussienne qui donne une bonne répartition de la distribution par rapport à la distribution des gènes des individus malades ci-dessous. 
+
+```{r echo = FALSE,, out.width = "100%", out.height= "100%", fig.align='center'}
+knitr::include_graphics("C:/Users/viche/Pictures/Rplot02.png")
+```
+
+Nous remarquon alors que la distribution des gênes n'est pas la même lorqu'un individus est malade. C'est pour cela que nous pensons que les maladies peuvent être dûs à la sous-expression ou sur-expression de certains gênes. L'ACP pourrait alors nous être utiles pour retrouver les gênes et faire les groupes d'individus. 
+
+## L'ACP
+
+Nous avons commencé à faire une ACP sur notre tous nos variables en même temps. Cependant, l'inertie de nos points se retrouvent au centre de notre cercle de corrélation et nos axes factorielles ne représentent pas bien la réalité de notre études. 
+
+
+
+
+
+Cela est précisé par le graphique des valeurs propres où seule la prmière valeur propre explique nos données de l'étude de avec la règle du coude
+```{r echo = FALSE,, out.width = "100%", out.height= "100%", fig.align='center'}
+knitr::include_graphics("C:/Users/viche/Pictures/dimACP.png")
+```
+
+Les autres inerties étant trop faible, la projection de nos 1000 gênes sur le cercle de corrélation n'est pas cohérente avec notre étude. 
