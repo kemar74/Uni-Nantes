@@ -1,0 +1,18 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX db: <http://dbpedia.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dbp:  <http://www.dbpedia.org/property/>
+PREFIX mo:  <http://my_onto.org/>
+
+SELECT (count(?countryName) as ?nombre_de_vins) (?countryName as ?Pays) (?happiness as ?Indice_de_bonheur)
+WHERE 
+{
+	?wine dbo:country ?country.
+	?country dbp:name ?countryName.
+	?country mo:hasHappinessValue ?happiness.
+}
+GROUPBY ?countryName ?happiness
+ORDERBY DESC (xsd:float(?happiness))
+LIMIT 10

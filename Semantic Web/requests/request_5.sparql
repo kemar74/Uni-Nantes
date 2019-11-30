@@ -1,0 +1,20 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX db: <http://dbpedia.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dbp:  <http://www.dbpedia.org/property/>
+PREFIX mo:  <http://my_onto.org/>
+
+SELECT ((ROUND(AVG(?price))) as ?Prix_moyen_vin) (?countryName as ?Pays) ((ROUND(xsd:float(?economy)*100)/100) as ?Indice_economie)
+WHERE 
+{
+	?wine a dbo:Wine.
+	?wine dbo:country ?country.
+	?wine dbo:price ?price.
+	?country dbp:name ?countryName.
+	?country mo:hasEconomyValue ?economy.
+}
+GROUPBY ?countryName ?economy
+ORDERBY DESC (?economy)
+LIMIT 10

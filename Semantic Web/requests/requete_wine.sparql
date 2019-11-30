@@ -1,0 +1,33 @@
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+  ?URI a dbo:Wine;
+	dbo:id ?id_val;
+    dbo:country ?country_iri;
+    dbo:description ?description_str;
+    dbo:name ?designation_str;
+    dbo:rating ?points_val;
+    dbo:price ?price_val;
+    dbo:Province ?province_iri;
+    dbo:Region ?region_1_iri;
+    dbo:Region ?region_2_iri;
+    dbo:ControlledDesignationOfOriginWine ?variety_iri;
+    dbo:Winery ?winery_iri
+} 
+FROM <file:winemag-data_first150k.csv> 
+WHERE {
+	BIND(IRI(?id) AS ?URI)
+	BIND(URI(CONCAT('http://dbpedia.org/resource/', REPLACE(?country, " ", "_"))) AS ?country_iri)
+	BIND(URI(CONCAT('http://dbpedia.org/resource/', REPLACE(?province, " ", "_"))) AS ?province_iri)
+	BIND(URI(CONCAT('http://dbpedia.org/resource/', REPLACE(?region_1, " ", "_"))) AS ?region_1_iri)
+	BIND(URI(CONCAT('http://dbpedia.org/resource/', REPLACE(?region_2, " ", "_"))) AS ?region_2_iri)
+	BIND(URI(CONCAT('http://dbpedia.org/resource/', REPLACE(?variety, " ", "_"))) AS ?variety_iri)
+	BIND(URI(CONCAT('http://dbpedia.org/resource/', REPLACE(?winery, " ", "_"))) AS ?winery_iri)
+	BIND(xsd:double(?price) AS ?price_val)
+	BIND(xsd:integer(?id) AS ?id_val)
+	BIND(xsd:string(?designation) AS ?designation_str)
+	BIND(xsd:text(?description) AS ?description_str)
+	BIND(xsd:integer(?points) AS ?points_val)
+}

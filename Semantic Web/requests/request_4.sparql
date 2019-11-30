@@ -1,0 +1,27 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX db: <http://dbpedia.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dbp:  <http://www.dbpedia.org/property/>
+PREFIX mo:  <http://my_onto.org/>
+PREFIX ex: <http://ex.org/>
+PREFIX poll: <file:///C:/Users/Eclegv/Desktop/tarql-1.2/bin/>
+PREFIX co: <http://ex.org/a#>
+
+SELECT (AVG(?rate) as ?Note_moyenne) (?countryName as ?Pays) ((round(AVG(?concentration) *10)/10) as ?Concentration_NO2)
+WHERE 
+{
+	?id co:concentrationNO2 ?concentr.
+	?concentr co:valueNO2 ?concentration.
+	?id dbo:city ?city.
+	?city dbo:country ?pollCountry.
+	?pollCountry co:valueCountry ?countryName.
+
+	?wine dbo:country ?wineCountry.
+	?wineCountry dbp:name ?countryName.
+	?wine dbo:rating ?rate.
+}
+GROUPBY ?countryName
+ORDERBY DESC (AVG(?concentration))
+LIMIT 10
