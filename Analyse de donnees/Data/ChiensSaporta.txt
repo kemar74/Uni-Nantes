@@ -1,0 +1,30 @@
+
+Race	Ta	Po	Ve	In	Af	Ag	Fn
+Beauceron	3	2	3	3	2	2	3
+Basset	1	1	1	1	1	2	2
+Berger-Allemand	3	2	3	3	2	2	3
+Boxer	2	2	2	2	2	2	1
+Bull-Dog	1	1	1	2	2	1	1
+Bull-Mastiff	3	3	1	3	1	2	3
+Caniche	1	1	2	3	2	1	1
+Chihuahua	1	1	1	1	2	1	1
+Cocker	2	1	1	2	2	2	1
+Colley	3	2	3	2	2	1	1
+Dalmatien	2	2	2	2	2	1	1
+Dobermann	3	2	3	3	1	2	3
+Dogue-Allemand	3	3	3	1	1	2	3
+Épagneul-Breton	2	2	2	3	2	1	2
+Épagneul-Français	3	2	2	2	1	1	2
+Fox-Hound	2	2	3	1	1	2	2
+Fox-Terrier	1	1	2	2	2	2	1
+Grand-Bleu-de-Gascogne	3	2	2	1	1	2	2
+Labrador	2	2	2	2	2	1	2
+Lévrier	3	2	3	1	1	1	2
+Mastiff	3	3	1	1	1	2	3
+Pékinois	1	1	1	1	2	1	1
+Pointer	3	2	3	3	1	1	2
+Saint-Bernard	3	3	1	2	1	2	3
+Setter	3	2	3	2	1	1	2
+Teckel	1	1	1	2	2	1	1
+Terre-Neuve	3	3	1	2	1	1	3
+

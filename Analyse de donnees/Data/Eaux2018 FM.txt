@@ -1,0 +1,96 @@
+Nom	Nature	Ca	Mg	Na	K	Cl	NO3	SO4	HCO3	PH	Pays
+Abatilles	plat	16	8	75	3	95	0	8	112	8.2	France
+Aix-Les-Bains	plat	72	38	14	2	6	1	81	329	7.4	France
+Alet	plat	63	23	13	1.3	11	2	14	300	7.4	France
+Alpille	plat	41	3	2	0	3	3	2	134	NA	France
+Amelie le Reine	NA	390	27.5	45	2.8	19	2	36	1376.6	NA	France
+Aquarelle	plat	70	2.1	2	NA	NA	4	NA	210	NA	France
+Ariegeoise	plat	2.8	0.6	1.6	0.4	2	NA	8	2.4	6.7	France
+Apolinaris	gaz	100	130	410	20	100	NA	80	1810	NA	France
+Arcens	gaz	9	16	252	5.3	24	NA	12	723	NA	France
+Arvie	gaz	170	92	650	130	387	0	31	2195	6.3	France
+Asperjoc	gaz	145	70	204.7	23.2	10.5	NA	NA	1433.5	NA	France
+Badoit	gaz	190	85	150	10	40	7	40	1300	6	France
+Carola	gaz	160	52	103	22	76	NA	205	505	NA	France
+Cesar	gaz	220	70	350	46	21	0	6	2000	6.5	France
+Chateauneuf	gaz	152	36	651	40	215	1	195	1799	7.4	France
+Chateldon	gaz	420	51	245	43	3	1	18	2075	6.2	France
+Celtic	plat	10.5	4	1.1	1.9	5	2.1	6	48	NA	France
+Cilaos	gaz	110.5	70.5	238	5.3	3	NA	54.7	1300.5	NA	France
+Contrex	plat	486	84	9.1	3.2	10	2.7	1187	403	7	France
+Courmayeur	plat	517	67	1	2	1	2	1371	168	7.4	France
+Christalline Alizee	plat	93	8.1	8.8	2.6	18	2	5.2	306	7.4	France
+Christalline Aurelie	plat	106	3.8	3.5	1.8	3.8	2	58.9	272	7.2	France
+Christalline Doye	plat	64.5	3.5	12	0.5	20	2.5	6	195	7.8	France
+Christalline Gds Bois	plat	124	25	11	3.5	16	0	60	420	7.6	France
+Christalline Lucheux	plat	96	2.2	7.2	0.7	15	NA	5	284	7	France
+Christalline Luciole	plat	107.8	15.1	101.5	0.8	80.4	NA	104.7	389.5	7.4	France
+Christalline Reudiere	plat	3.2	1.7	8.1	0.8	17.4	NA	2.5	15.2	NA	France
+Christalline Ste Cecile	plat	44	24	23	2	5	1	3	287	7.6	France
+Christalline St Cyr	plat	71	5.5	11.2	3.2	20	1	5	250	7.5	France
+Christalline St JB	plat	82	7.4	7.3	1.9	14	3.9	18	263	7.5	France
+Christalline St Medard	plat	40	11	47	3	70	1	8	177	7.5	France
+Christalline St Sophie	plat	63	26	99	21	33	2	60	493	7.4	France
+Christalline St Sophie	gaz	67	26	84	20	32	2	61	473	5.2	France
+Christalline Vogia	plat	6.4	1.2	3	0.5	3	4	5	20	6.5	France
+Eau Claire	plat	12.1	8.8	8.2	1.8	7.7	NA	15.2	61	6.9	France
+Mont Auv Carrefour	plat	4.1	1.7	2.7	0.9	0.9	0.8	1.1	25.8	7.3	France
+Montagne Alpes	plat	63	10.2	1.4	0.4	1	2	51.3	173.2	7.6	France
+Montagne Ecrins	plat	63	10	1.4	0.4	1	2	51	173	7.6	France
+Eau  Lucheux	plat	96	2.2	7.2	0.7	15	NA	5	284	7	France
+Versoie	plat	108	14	3	1	9	8	13	350	7.4	France
+Evian	plat	78	24	5	1	4.5	3.8	10	357	7.2	France
+Fontanel	plat	36.3	10.9	39.6	2.2	NA	NA	41.2	NA	7.4	France
+Fonfort	plat	106	93	1110	120	115	1	1.7	3800	NA	France
+Hepar	plat	555	110	14	4	18.8	2.9	1479	403	7	France
+Hydroxydase	gaz	213.5	243	1945	192.2	367	NA	10.8	6722.2	6.8	France
+Jouvence	gaz	100	11.5	3	NA	NA	0	150	160	NA	France
+La Montille	NA	4	1	3	0.8	0.8	2.1	0.4	23.4	6.7	France
+Laqueille	plat	6.5	2	4.4	1.7	1	0.5	0.2	44	7.7	France
+Luchon	plat	26.5	1	0.8	0.2	2.3	1.8	8.2	78.1	8	France
+Montcalm	plat	3	0.6	1.5	0.4	0.6	1	8.7	5.2	6.8	France
+MontDore	plat	3.6	1.8	3.6	0.6	0.9	0.5	1.2	25.8	6.9	France
+Mont Roucous	plat	2.4	0.5	3.1	0.4	3	3	2	6.3	5.9	France
+Ogeu-les-Bains	plat	48	11	31	NA	44	NA	16	183	NA	France
+Ondine	plat	7	7.7	9.9	1.9	4.3	NA	14.4	61	6.9	France
+Ondine St Benoit	plat	46.1	4.3	6.3	3.5	3.5	1	9	163.5	7.7	France
+Oriol	plat	307.5	23	26.1	0.9	13.2	2.5	32.3	1030.9	NA	France
+Parot	gaz	94	83.5	905	116	80	1	25	3204.8	6.5	France
+Perrier	gaz	147.3	3.4	9	1	21.5	18.3	33	430	5.5	France
+Pioule	NA	140.8	11.4	33.5	1.1	38.2	NA	117.7	351	7.3	France
+Plancoet	plat	24	16	32	4.9	38	0	50	121	6.4	France
+Quezac	gaz	241	95	255	49.7	38	1	143	1685.4	5.2	France
+Renlaigue	plat	85	80	385	65	285	1.9	25	1350	6	France
+Rozana	gaz	301	160	493	52	649	1	230	1837	6.3	France
+Salvetat	gaz	253	11	7	3	4	1	25	820	6	France
+St Amand	plat	176	46	28	5	37	0	372	312	7.2	France
+St Claude	gaz	6.7	1.6	7.1	0.5	8.2	NA	5.8	30.5	6.8	France
+St Diery	gaz	85	80	385	65	285	1.9	25	1350	5.9	France
+Ste Marguerite	gaz	200	133	400	41	379	8	173	1390	5.8	France
+Sancy	plat	3.6	1.8	3.6	0.6	0.9	0.5	1.2	24.4	6.9	France
+San Pellegrino	gaz	208	55.9	43.6	2.7	74.3	0.5	549.2	219.6	7.7	France
+SPA	plat	3.5	1.3	3	0.5	5	1.9	6.5	NA	5.8	France
+Talians	plat	596	77	7	2	8	0.5	1530	290	7.1	France
+Terres de Flein	plat	116	4.4	9	2.4	15.5	1	25.5	331	7.2	France
+Thonon	plat	108	14	3	1	9	12	13	350	7.4	France
+Vals	gaz	25.2	21.3	453	40.8	27.2	1	38.9	1403	6.2	France
+Valvert	plat	67.6	2	1.9	0.2	4	3.5	18	204	NA	France
+Verniere	gaz	190	72	154	49	18	0	158	1170	6	France
+Vichy Celestins	gaz	103	10	1172	66	235	2	138	2989	6.8	France
+Vichy St Yorre	gaz	90	11	1708	132	322	NA	174	4368	6.6	France
+Vittel	plat	202	36	3.8	2	7.2	6	306	402	7.6	France
+Volcania	plat	2.7	1	2.4	0.5	1.2	2.4	1	13	6.3	France
+Volvic	plat	11.5	8	11.6	5.7	13.4	6.3	8.1	71	7	France
+Wattwiller	plat	288	20.1	3	1.4	3.9	NA	67.8	142	7.5	France
+Zilia	gaz	11	5.1	15	1.3	15	2.2	5	67.7	7.5	France
+Sidi Ali	plat	12.02	8.7	25.5	2.8	14.2	0.1	41.7	103.7	6.5	Maroc
+Sidi Harazem	plat	70	40	120	8	220	4	20	335	7.3	Maroc
+Ain Saiss	plat	63.5	35.5	8	1	19.8	7	3.8	372	6.5	Maroc
+Oulmès	plat	148.8	48.6	224	26	280	2.8	14.3	890.9	7.6	Maroc
+Ain Soltane	plat	70	44	4	1	NA	19	3.7	402	NA	Maroc
+Ain Atlas	plat	17.8	13.6	50	8	14.2	5.2	12.9	250.1	NA	Maroc
+Ain Ifrane	plat	67.7	40.6	3	1	10.7	5.2	5.1	402.6	NA	Maroc
+Ain Chefchaoun	plat	80.4	16.2	14.5	1	17.5	0.3	20.9	309.8	NA	Maroc
+Bahia	plat	8.0	7.3	46	1	7.8	0.1	15.7	42.7	6.5	Maroc
+Ciel	plat	25.7	23.8	224	26	130	1.3	6.2	27.5	6.5	Maroc
+Mazine	plat	11.2	9.7	52	1	88.8	3.4	20.6	42.7	6.5	Maroc

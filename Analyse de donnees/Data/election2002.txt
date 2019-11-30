@@ -1,0 +1,17 @@
+	LaCroix	LeFigaro	Liberation	LeMonde	LeParisien	LeCanard	LExpress	Marianne	NouvelObs	ParisMatch	Telerama	LePoint	
+Laguiller	0	2	6	5	4	8	4	6	4	4	4	2	
+Besancenot	2	2	8	6	3	7	2	6	7	2	8	2	
+Hue	2	0	3	2	4	5	1	2	2	1	5	1	
+Jospin	3	7	41	26	12	29	15	19	35	15	28	7
+Taubira	2	1	5	3	2	2	2	3	3	0	4	3	
+Chevenement	2	2	5	5	4	7	4	15	5	2	7	2	
+Mamere	4	1	10	7	6	9	5	4	8	2	13	1	
+Lepage	5	3	0	2	1	2	2	2	1	2	2	2	
+SaintJoss	3	1	1	1	1	4	3	3	1	3	0	1	
+Bayrou	20	8	2	5	6	4	8	10	6	7	10	8	
+Madelin	2	9	2	4	2	2	9	5	3	4	3	9	
+Chirac	29	35	9	18	23	8	22	9	14	29	9	41	
+Boutin	8	3	0	1	2	0	1	1	1	2	2	2	
+Megret	2	3	0	2	2	2	5	3	0	2	0	1	
+LePen	14	22	7	12	27	10	16	10	9	22	3	16	
+Blanc	2	1	1	1	1	1	1	2	1	3	2	2	

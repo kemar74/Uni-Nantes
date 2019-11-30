@@ -1,0 +1,17 @@
+proteine graisse lactose
+anesse 1.7 1.4 6.2
+baleine 11.1 21.2 1.6
+biche 10.4 19.7 2.6
+brebis 5.6 6.4 4.7
+buffle 5.9 7.9 4.7
+chamelle 3.5 3.4 4.8
+cobaye 7.4 7.2 2.7
+jument 2.6 1 6.9
+lama 3.9 3.2 5.6
+lapine 12.3 13.1 1.9
+mule 2 1.8 5.5
+rate 9.2 12.6 3.3
+renarde 6.6 5.9 4.9
+renne 10.7 20.3 2.5
+truie 7.1 5.1 3.7
+zebre 3 4.8 5.3
