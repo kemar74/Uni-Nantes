@@ -1,0 +1,307 @@
+---
+title: "TP1"
+author: "HARTLEY Marc - VENTE Maxime"
+date: "27/09/2019"
+output:
+  pdf_document:
+    toc: true
+  html_document: 
+    toc: true
+  word_document: 
+    toc: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, commet=NA)
+source("TP1.R")
+```
+# Rapport TP1
+Retour sur le TP1 donné le 26/09 :
+
+## Objectif : prise en main de R à travers quelques exercices
+### Exercice 1 : manipulations de matrices
++ a. Rotation d'un cran
+
+_Écrire, de la façon la plus concise possible, le code d’une fonction effectuant une rotation vers la droite d’un tableau
+(appliqué à [12,5,7,21,6] elle doit fournir [6,12,5,7,21]), puis une autre effectuant une rotation vers la gauche._
+
+
+La fonction :
+```{r, block-1}
+print(rotationCran)
+```
+Pour cette fonction, j'ai décidé de couper le tableau passé en paramètre en 2 selon le nombre de cran demandé avec le paramètre `cran` (par défaut 1), puis de recoller ces morceaux en les inversants. J'ai décider de ne réaliser qu'une fonction pour tourner à droite et à gauche, cela permet de ne pas préoccuper l'utilisateur du signe de la valeur ```cran``.
+
+Ainsi, aucun soucis pour réaliser une suite de rotations dans n'importe quel sens :
+```{r, block-2}
+tableau <- 1:5
+for(i in 1:5) {
+  tableau <- rotationCran(tableau, ((-1)**i) * i)
+  print(paste("Rotation de ", ((-1)**i) * i))
+  print(tableau)
+}
+```
+
++ b. Permutations
+
+_Une permutation (et en particulier une rotation) peut être
+représentée soit par une liste des nouveaux indices soit par une matrice
+carrée ayant exactement un 1 par ligne et par colonne, le reste étant des
+zéros.
+Par exemple c(2,4,5,1,3) représente la permutation qui à 1
+associe 2, à 2 associe 4, à 3 associe 5,… Sa représentation matricielle
+est visible ci-contre_
+```{r, block-3, echo=F}
+matrix(c(0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0), nrow=5)
+```
+_Une telle matrice permet d’effectuer la permutation correspondante d’un vecteur de nombres grâce à une
+multiplication de matrices. Écrire le code des deux fonctions permettant de transformer chaque représentation en l’autre.
+Donner des exemples d’utilisation_
+
+Voici la fonction permettant de trouver la matrice de permutation utilisée pour réorganiser un certain vecteur :
+```{r, block-5}
+print(trouverMatriceDePermutation)
+
+# Exemple
+trouverMatriceDePermutation(c(2, 4, 5, 1, 3))
+
+# Exemple avec des chaines de caractères
+trouverMatriceDePermutation(c("D", "A", "I", "V", "G"))
+```
+Je n'ai malheureusement pas trouvé de moyen de la faire fonctionner sans boucles `for`.
+
+Mais elle a l'avantage de pouvoir fonctionner avec n'importe quel vecteur de type "comparable" (grace à la fonction `rank()`).
+
+Ceci peut très bien être réalisé d'une autre manière afin de récuperer un **vecteur** de permutation. Voici la fonction `trouverVecteurDePermutation` :
+```{r, block-6}
+print(trouverVecteurDePermutation)
+```
+Quelques exemples :
+```{r, block-7}
+# En utilisant la matrice de l'énoncé :
+m <- matrix(c(0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0), nrow=5)
+print(trouverVecteurDePermutation(m))
+
+# Les fonctions sont des bijections réciproques
+print(trouverVecteurDePermutation(trouverMatriceDePermutation(c(5, 3, 2, 1, 4))))
+```
+
+
+Nous allons diviser la suite de ce DM en deux parties : une première dans laquelle nous utiliserons des **matrices** pour les permutations, puis une deuxième avec des **vecteurs** de permutation. Cela permet de voir que tout est possible, nous pourrons donc comparer l'efficacité de chacune des solutions.
+
+#### Team "Matrice"
+
++ c. Application
+
+1. _Écrire une fonction qui applique une permutation sur un vecteur de valeurs numériques (entières ou réelles)._
+2. _Écrire une fonction permettant de composer deux permutations._
+3. _Écrire de même une fonction donnant la permutation inverse c’est à dire la bijection réciproque._
+
+Voyons cela dans l'ordre :
+
+1. Permuter 
+
+Donc tout d'abord, voici la fonction au plus simple permettant de réaliser une permutation :
+```{r, block-8}
+print(permuter)
+```
+On réalise tout simplement un produit de matrice entre le vecteur à permuter et la matrice de permutation. Cela aurait pu se réaliser avec des boucles, mais c'est  beaucoup moins efficace. Voici le code avec les boucles :
+```{r, block-9, echo=F}
+print(permuterLong)
+```
+
+2. Composition de matrice de permutation : 
+
+Il suffira, entre deux matrices de permutation, de réaliser un produit matriciel entre elles :
+```{r, block-10}
+composer <- function(m1, m2) {
+  return(m1 %*% m2)
+}
+```
+
+3. Permutation inverse :
+
+Cette fonction est très simple, car il suffit de transposer la matrice de permutation pour inverser son action :
+```{r, block-11}
+print(inverserPermutation)
+
+# Exemple
+vecteur <- 1:5
+matriceDePermutation <- trouverMatriceDePermutation(c(4, 5, 3, 1, 2))
+vecteur <- permuter(vecteur, matriceDePermutation)
+print(vecteur)
+vecteur <- inverserPermutation(vecteur, matriceDePermutation)
+print(vecteur)
+```
+
++ d. Ordre 
+
+_L’ordre d’une permutation est le plus petit entier p telle que composer p fois cette permutation donne l’identité.
+Proposer différentes programmations d’une fonction qui détermine l’ordre d’une permutation : en utilisant la notation
+matricielle ou la notation vecteur, en utilisant des boucles explicites ou avec une écriture plus concise._
+
+Ne connaissant pas le principe d'ordre, nous pouvons proposer une fonction suivant l'explication proposée dans l'énoncé : c'est-à-dire réaliser une suite de permutation à un vecteur et de compter le nombre d'itération avant de retrouver sa forme originale :
+```{r, block-12, echo=F}
+print(calculOrdrePermutationLong_matrice)
+```
+
+Après des recherches sur internet ([Wikipédia](https://fr.wikipedia.org/wiki/Permutation)), j'apprend que nous pouvons calculer l'ordre de manière plus mathématique :
+
+> l'ordre de σ (en tant qu'élément du groupe symétrique) est le plus petit entier k>0 tel que σk est l'identité. Il est égal au PPCM des longueurs des cycles.
+
+(avec σ la permutation)
+
+Il suffit donc de trouver la longueur des cycles et de réaliser un PPCM :
+```{r, block-13}
+print(pgcd)
+print(ppcm)
+```
+Ici j'ai modifié les fonctions "classiques" du PGCD et du PPCM afin de pouvoir traiter des vecteurs entiers plutôt que les valeurs 2 par 2.
+
+On peut maintenant calculer l'ordre de la permutation en comptant les cycles de la permutation puis en y appliquant un PPCM :
+```{r, block-14}
+print(calculOrdrePermutation)
+```
+Nous ne sommes pas encore à un niveau optimal car nous sommes en train de compter le cycle pour chaque indice du vecteur permuté, or il serait possible de reduire ces calculs aux X cycles du vecteur. Mais la solution ici proposée est déjà, nous pensons, suffisante.
+
+#### Team "Vecteur"
+
+Dans cette partie, nous expliquerons moins le contenu des fonctions, étant composées de boucles et réalisant le même résultat que celles vues précédemment.  
+Réalisons de nouveau les exercices c. et d. :
+
+
++ c. Application
+
+1. _Écrire une fonction qui applique une permutation sur un vecteur de valeurs numériques (entières ou réelles)._
+2. _Écrire une fonction permettant de composer deux permutations._
+3. _Écrire de même une fonction donnant la permutation inverse c’est à dire la bijection réciproque._
+
+
+1. Permutation :
+```{r, block-15}
+print(permuter_vecteur)
+```
+
+2. Composition :
+
+Ici, nous avons 4 possibilités : la première "matrice" est une matrice ou un vecteur, la deuxième est un vecteur ou une matrice.
+```{r, block-16}
+print(composerPermutation)
+```
+La seule précision : pour trouver la matrice composée avec un vecteur, nous permutons chaque ligne de la matrice en fonction du deuxième vecteur.
+
+3. Permutation inverse :
+
+Nous avons dû réfléchir un peu autour de cette solution : comment trouver la permutation inverse d'un vecteur? Et bien l'élément originellement à la X^ième^ position s'est retrouvé à la Y^ième^. Donc sur le vecteur de permutation, l'élément Y est placé en X^ième^ position. Il suffit de créer un vecteur avec X à la Y^ième^ place :
+```{r, block-17}
+print(inverserPermutation_vecteur)
+```
+
++ d. Ordre : 
+
+Toujours 2 possibilités pour calculer l'ordre de la permutation : soit en répêtant les permutations, soit de manière mathématique.
+
+1^ère^ possibilité :
+```{r, block-18}
+print(calculOrdrePermutationLong_vecteur)
+```
+Et la seconde, sûrement plus rapide :
+```{r, block-19}
+print(calculOrdrePermutation_vecteur)
+```
+
+### Exercice 2 : Étudier les fonctions
+Bien, nous avons donc plusieurs structures de fonction à étudier (boucles ou non, utilisation de matrice ou de vecteurs). Voyons comment les comparer.Tout d'abord, nous utiliserons une fontion ayant comme seul but de répêter une même fonction un nombre donné de fois et de renvoyer un tableau avec le temps mis pour chaque itération de la fonction :
+```{r, block-21}
+print(createProcessTest)
+```
+
+Nous allons donc essayer de comparer la fonction de calcul d'ordre selon 2 critères : 
+- avec ou sans répétitions de permutations
+- avec vecteurs ou matrices
+
+Bien, commençons par passer le test à ces quatre fonctions :
+```{r, block-22, cache=T}
+print(generation)
+
+sampleSize <- 50
+nbOperations <- 5
+
+vecteurDePermutation <- generation(sampleSize, 10)
+matriceDePermutation <- trouverMatriceDePermutation(vecteurDePermutation)
+
+tempsRapideMatrice = mean(createProcessTest(calculOrdrePermutation, matriceDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+tempsRapideVecteur = mean(createProcessTest(calculOrdrePermutation_vecteur, vecteurDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+tempsLentMatrice = mean(createProcessTest(calculOrdrePermutationLong, matriceDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+tempsLentVecteur = mean(createProcessTest(calculOrdrePermutationLong, vecteurDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+```
+```{r, block-22-b, cache=T}
+writeLines(paste(c(paste(c("Temps moyens pour un vecteur de longueur ", sampleSize, " (en secondes):"), collapse=""), "\nAvec boucles et matrice : ", round(tempsLentMatrice, 3), "\nAvec boucles et vecteur : ", round(tempsLentVecteur, 3), "\nSans boucle avec matrice : ", round(tempsRapideMatrice, 3), "\nSans boucle avec vecteur : ", round(tempsRapideVecteur, 3)), collapse = ""))
+```
+```{r, block-22-c, echo=F, cache=T}
+sampleSize <- 150
+
+vecteurDePermutation <- generation(sampleSize, 10)
+matriceDePermutation <- trouverMatriceDePermutation(vecteurDePermutation)
+
+tempsRapideMatrice = mean(createProcessTest(calculOrdrePermutation, matriceDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+tempsRapideVecteur = mean(createProcessTest(calculOrdrePermutation_vecteur, vecteurDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+tempsLentMatrice = mean(createProcessTest(calculOrdrePermutationLong, matriceDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+tempsLentVecteur = mean(createProcessTest(calculOrdrePermutationLong, vecteurDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+writeLines(paste(c(paste(c("Temps moyens pour un vecteur de longueur ", sampleSize, " (en secondes):"), collapse=""), "\nAvec boucles et matrice : ", round(tempsLentMatrice, 3), "\nAvec boucles et vecteur : ", round(tempsLentVecteur, 3), "\nSans boucle avec matrice : ", round(tempsRapideMatrice, 3), "\nSans boucle avec vecteur : ", round(tempsRapideVecteur, 3)), collapse = ""))
+```
+```{r, block-22-d, echo=F, cache=T}
+sampleSize <- 250
+
+vecteurDePermutation <- generation(sampleSize, 3)
+matriceDePermutation <- trouverMatriceDePermutation(vecteurDePermutation)
+
+tempsRapideMatrice = mean(createProcessTest(calculOrdrePermutation, matriceDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+tempsRapideVecteur = mean(createProcessTest(calculOrdrePermutation_vecteur, vecteurDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+tempsLentMatrice = mean(createProcessTest(calculOrdrePermutationLong, matriceDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+tempsLentVecteur = mean(createProcessTest(calculOrdrePermutationLong, vecteurDePermutation, nbOperations, outputProgress = F, stopIfTooBig = 0))
+writeLines(paste(c(paste(c("Temps moyens pour un vecteur de longueur ", sampleSize, " (en secondes):"), collapse=""), "\nAvec boucles et matrice : ", round(tempsLentMatrice, 3), "\nAvec boucles et vecteur : ", round(tempsLentVecteur, 3), "\nSans boucle avec matrice : ", round(tempsRapideMatrice, 3), "\nSans boucle avec vecteur : ", round(tempsRapideVecteur, 3)), collapse = ""))
+```
+On voit bien clairement la difference de temps entre les fonctions utilisant des boucles et celles sans!
+Nous pouvons les classer : dans les dernières conditions, la pire est l'utilisation de matrices avec boucles [ >40s], puis utilisation de vecteurs avec boucles [ ~5s], puis (disons) ex aequo, les deux fonction n'utilisant pas de boucles [ < 20ms].
+
+
+Voyons maintenant en modifiant la valeur de `N`.
+Nous allons donc créer une fonction ayant pour but de lancer les fonctions avec une taille des données allant de 1 à N :
+```{r, block-25, results='hide'}
+print(doFullTest)
+```
+En sortie, nous avons la liste des temps d'exécution réalisé pour chaque taille de données (qui sont répétés 5 fois afin de pouvoir utiliser la moyenne).
+
+Nous n'avons plus qu'à lancer les calculs pour chaque fonction et de les afficher dans un graphique :
+```{r, block-26-a}
+print(testsDeFonctions)
+```
+```{r, block-26-b, cache=T, results='hide', warning=F}
+testsDeFonctions(300, 5, stopIfTooBig = 5)
+```
+Nous n'avons pas à aller au delà d'une taille `N` de 300 car les deux fonctions à boucles mettent déjà plus de 10 secondes à s'exécuter.
+
+Regardons les deux groupes : tout d'abord, les deux plus lentes (utilisation de boucles):
+```{r, block-26-c}
+print(testsDeFonctionsLongues)
+```
+```{r, block-26-d, cache=T, results='hide', warning=F}
+testsDeFonctionsLongues(300, 2, stopIfTooBig = 3)
+```
+L'utilisation des matrice est encore pire qu'avec des vecteurs.
+
+
+Mais il est possible d'aller bien plus loin avec les deux autres fonctions :
+```{r, block-27-a}
+print(testsDeFonctionsRapides)
+```
+```{r, block-27-b, cache=T, results='hide', warning=F}
+testsDeFonctionsRapides(10000, 50, stopIfTooBig = 4)
+```
+
+On voit bien ici que ces deux fonctions ont des performances similaires (~1.5s pour une taille `N`=3000), donc il est égal de choisir n'importe lequel des deux algorithmes. On remarque aussi que ces fonctions s'executent aussi rapidement avec `N`=3000 que les fonctions avec boucles pour `N`=150.
+
+## Annexes : Toutes les fonctions
+```{r, annexes, code = readLines("TP1.R")}
+```
+
