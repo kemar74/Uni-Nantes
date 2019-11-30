@@ -1,0 +1,308 @@
+<https://schema.org/variableMeasured/Af2008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2008> <http://dbpedia.org/ontology/year> "2008"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2008> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2008> <http://dbpedia.org/ontology/value> "1028.0"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2008> <http://dbpedia.org/ontology/year> "2008"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2008> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2008> <http://dbpedia.org/ontology/value> "1132.6"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2008> <http://dbpedia.org/ontology/year> "2008"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2008> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2008> <http://dbpedia.org/ontology/value> "1620.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2008> <http://dbpedia.org/ontology/year> "2008"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2008> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2008> <http://dbpedia.org/ontology/value> "4965.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2008> <http://dbpedia.org/ontology/year> "2008"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2008> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2008> <http://dbpedia.org/ontology/value> "6600.4"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2008> <http://dbpedia.org/ontology/year> "2008"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2008> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2008> <http://dbpedia.org/ontology/value> "12654.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2008> <http://dbpedia.org/ontology/year> "2008"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2008> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2008> <http://dbpedia.org/ontology/value> "1993.0"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Af2009> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2009> <http://dbpedia.org/ontology/year> "2009"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2009> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2009> <http://dbpedia.org/ontology/value> "1041.9"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2009> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2009> <http://dbpedia.org/ontology/year> "2009"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2009> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2009> <http://dbpedia.org/ontology/value> "1093.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2009> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2009> <http://dbpedia.org/ontology/year> "2009"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2009> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2009> <http://dbpedia.org/ontology/value> "1656.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2009> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2009> <http://dbpedia.org/ontology/year> "2009"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2009> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2009> <http://dbpedia.org/ontology/value> "4616.4"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2009> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2009> <http://dbpedia.org/ontology/year> "2009"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2009> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2009> <http://dbpedia.org/ontology/value> "6139.9"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2009> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2009> <http://dbpedia.org/ontology/year> "2009"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2009> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2009> <http://dbpedia.org/ontology/value> "13246.6"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2009> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2009> <http://dbpedia.org/ontology/year> "2009"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2009> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2009> <http://dbpedia.org/ontology/value> "1875.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Af2010> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2010> <http://dbpedia.org/ontology/year> "2010"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2010> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2010> <http://dbpedia.org/ontology/value> "1072.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2010> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2010> <http://dbpedia.org/ontology/year> "2010"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2010> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2010> <http://dbpedia.org/ontology/value> "1164.2"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2010> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2010> <http://dbpedia.org/ontology/year> "2010"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2010> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2010> <http://dbpedia.org/ontology/value> "1736.2"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2010> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2010> <http://dbpedia.org/ontology/year> "2010"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2010> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2010> <http://dbpedia.org/ontology/value> "4705.8"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2010> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2010> <http://dbpedia.org/ontology/year> "2010"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2010> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2010> <http://dbpedia.org/ontology/value> "6375.8"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2010> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2010> <http://dbpedia.org/ontology/year> "2010"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2010> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2010> <http://dbpedia.org/ontology/value> "13986.8"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2010> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2010> <http://dbpedia.org/ontology/year> "2010"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2010> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2010> <http://dbpedia.org/ontology/value> "1939.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Af2011> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2011> <http://dbpedia.org/ontology/year> "2011"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2011> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2011> <http://dbpedia.org/ontology/value> "1073.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2011> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2011> <http://dbpedia.org/ontology/year> "2011"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2011> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2011> <http://dbpedia.org/ontology/value> "1215.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2011> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2011> <http://dbpedia.org/ontology/year> "2011"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2011> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2011> <http://dbpedia.org/ontology/value> "1789.0"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2011> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2011> <http://dbpedia.org/ontology/year> "2011"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2011> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2011> <http://dbpedia.org/ontology/value> "4615.2"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2011> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2011> <http://dbpedia.org/ontology/year> "2011"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2011> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2011> <http://dbpedia.org/ontology/value> "6262.8"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2011> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2011> <http://dbpedia.org/ontology/year> "2011"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2011> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2011> <http://dbpedia.org/ontology/value> "14860.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2011> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2011> <http://dbpedia.org/ontology/year> "2011"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2011> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2011> <http://dbpedia.org/ontology/value> "2035.2"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Af2012> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2012> <http://dbpedia.org/ontology/year> "2012"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2012> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2012> <http://dbpedia.org/ontology/value> "1107.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2012> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2012> <http://dbpedia.org/ontology/year> "2012"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2012> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2012> <http://dbpedia.org/ontology/value> "1262.0"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2012> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2012> <http://dbpedia.org/ontology/year> "2012"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2012> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2012> <http://dbpedia.org/ontology/value> "1853.3"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2012> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2012> <http://dbpedia.org/ontology/year> "2012"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2012> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2012> <http://dbpedia.org/ontology/value> "4541.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2012> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2012> <http://dbpedia.org/ontology/year> "2012"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2012> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2012> <http://dbpedia.org/ontology/value> "5998.9"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2012> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2012> <http://dbpedia.org/ontology/year> "2012"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2012> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2012> <http://dbpedia.org/ontology/value> "15308.8"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2012> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2012> <http://dbpedia.org/ontology/year> "2012"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2012> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2012> <http://dbpedia.org/ontology/value> "2063.2"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Af2013> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2013> <http://dbpedia.org/ontology/year> "2013"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2013> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2013> <http://dbpedia.org/ontology/value> "1134.4"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2013> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2013> <http://dbpedia.org/ontology/year> "2013"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2013> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2013> <http://dbpedia.org/ontology/value> "1308.9"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2013> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2013> <http://dbpedia.org/ontology/year> "2013"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2013> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2013> <http://dbpedia.org/ontology/value> "1926.3"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2013> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2013> <http://dbpedia.org/ontology/year> "2013"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2013> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2013> <http://dbpedia.org/ontology/value> "4436.9"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2013> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2013> <http://dbpedia.org/ontology/year> "2013"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2013> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2013> <http://dbpedia.org/ontology/value> "6167.0"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2013> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2013> <http://dbpedia.org/ontology/year> "2013"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2013> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2013> <http://dbpedia.org/ontology/value> "15660.2"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2013> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2013> <http://dbpedia.org/ontology/year> "2013"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2013> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2013> <http://dbpedia.org/ontology/value> "2014.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Af2014> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2014> <http://dbpedia.org/ontology/year> "2014"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2014> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2014> <http://dbpedia.org/ontology/value> "1167.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2014> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2014> <http://dbpedia.org/ontology/year> "2014"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2014> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2014> <http://dbpedia.org/ontology/value> "1331.3"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2014> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2014> <http://dbpedia.org/ontology/year> "2014"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2014> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2014> <http://dbpedia.org/ontology/value> "1965.2"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2014> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2014> <http://dbpedia.org/ontology/year> "2014"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2014> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2014> <http://dbpedia.org/ontology/value> "4202.0"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2014> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2014> <http://dbpedia.org/ontology/year> "2014"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2014> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2014> <http://dbpedia.org/ontology/value> "6268.9"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2014> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2014> <http://dbpedia.org/ontology/year> "2014"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2014> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2014> <http://dbpedia.org/ontology/value> "15787.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2014> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2014> <http://dbpedia.org/ontology/year> "2014"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2014> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2014> <http://dbpedia.org/ontology/value> "2027.6"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Af2015> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2015> <http://dbpedia.org/ontology/year> "2015"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2015> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2015> <http://dbpedia.org/ontology/value> "1174.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2015> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2015> <http://dbpedia.org/ontology/year> "2015"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2015> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2015> <http://dbpedia.org/ontology/value> "1321.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2015> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2015> <http://dbpedia.org/ontology/year> "2015"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2015> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2015> <http://dbpedia.org/ontology/value> "2019.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2015> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2015> <http://dbpedia.org/ontology/year> "2015"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2015> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2015> <http://dbpedia.org/ontology/value> "4191.6"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2015> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2015> <http://dbpedia.org/ontology/year> "2015"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2015> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2015> <http://dbpedia.org/ontology/value> "6048.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2015> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2015> <http://dbpedia.org/ontology/year> "2015"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2015> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2015> <http://dbpedia.org/ontology/value> "15877.0"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2015> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2015> <http://dbpedia.org/ontology/year> "2015"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2015> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2015> <http://dbpedia.org/ontology/value> "1986.8"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Af2016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2016> <http://dbpedia.org/ontology/year> "2016"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2016> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2016> <http://dbpedia.org/ontology/value> "1192.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2016> <http://dbpedia.org/ontology/year> "2016"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2016> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2016> <http://dbpedia.org/ontology/value> "1294.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2016> <http://dbpedia.org/ontology/year> "2016"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2016> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2016> <http://dbpedia.org/ontology/value> "2061.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2016> <http://dbpedia.org/ontology/year> "2016"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2016> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2016> <http://dbpedia.org/ontology/value> "4247.3"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2016> <http://dbpedia.org/ontology/year> "2016"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2016> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2016> <http://dbpedia.org/ontology/value> "5938.3"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2016> <http://dbpedia.org/ontology/year> "2016"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2016> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2016> <http://dbpedia.org/ontology/value> "15984.0"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2016> <http://dbpedia.org/ontology/year> "2016"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2016> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2016> <http://dbpedia.org/ontology/value> "1997.4"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Af2017> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2017> <http://dbpedia.org/ontology/year> "2017"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2017> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2017> <http://dbpedia.org/ontology/value> "1207.0"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2017> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2017> <http://dbpedia.org/ontology/year> "2017"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2017> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2017> <http://dbpedia.org/ontology/value> "1279.2"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2017> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2017> <http://dbpedia.org/ontology/year> "2017"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2017> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2017> <http://dbpedia.org/ontology/value> "2078.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2017> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2017> <http://dbpedia.org/ontology/year> "2017"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2017> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2017> <http://dbpedia.org/ontology/value> "4278.7"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2017> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2017> <http://dbpedia.org/ontology/year> "2017"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2017> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2017> <http://dbpedia.org/ontology/value> "5920.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2017> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2017> <http://dbpedia.org/ontology/year> "2017"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2017> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2017> <http://dbpedia.org/ontology/value> "16274.3"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2017> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2017> <http://dbpedia.org/ontology/year> "2017"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2017> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2017> <http://dbpedia.org/ontology/value> "2001.3"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Af2018> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Af2018> <http://dbpedia.org/ontology/year> "2018"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Af2018> <http://dbpedia.org/ontology/location> "Africa" .
+<https://schema.org/variableMeasured/Af2018> <http://dbpedia.org/ontology/value> "1235.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/So2018> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/So2018> <http://dbpedia.org/ontology/year> "2018"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/So2018> <http://dbpedia.org/ontology/location> "South and Central America" .
+<https://schema.org/variableMeasured/So2018> <http://dbpedia.org/ontology/value> "1261.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Mi2018> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Mi2018> <http://dbpedia.org/ontology/year> "2018"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Mi2018> <http://dbpedia.org/ontology/location> "Middle East" .
+<https://schema.org/variableMeasured/Mi2018> <http://dbpedia.org/ontology/value> "2118.3"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Eu2018> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Eu2018> <http://dbpedia.org/ontology/year> "2018"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Eu2018> <http://dbpedia.org/ontology/location> "Europe" .
+<https://schema.org/variableMeasured/Eu2018> <http://dbpedia.org/ontology/value> "4209.3"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/No2018> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/No2018> <http://dbpedia.org/ontology/year> "2018"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/No2018> <http://dbpedia.org/ontology/location> "North America" .
+<https://schema.org/variableMeasured/No2018> <http://dbpedia.org/ontology/value> "6035.6"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/As2018> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/As2018> <http://dbpedia.org/ontology/year> "2018"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/As2018> <http://dbpedia.org/ontology/location> "Asia Pacific" .
+<https://schema.org/variableMeasured/As2018> <http://dbpedia.org/ontology/value> "16274.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<https://schema.org/variableMeasured/Co2018> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://fr.dbpedia.org/resource/\u00C9mission_de_dioxyde_de_carbone> .
+<https://schema.org/variableMeasured/Co2018> <http://dbpedia.org/ontology/year> "2018"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://schema.org/variableMeasured/Co2018> <http://dbpedia.org/ontology/location> "Commonwealth of Independent States" .
+<https://schema.org/variableMeasured/Co2018> <http://dbpedia.org/ontology/value> "2100.5"^^<http://www.w3.org/2001/XMLSchema#decimal> .
