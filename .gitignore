@@ -1,5 +1,6 @@
 ignore/
 *.ttl
+WebAndCloud/
 
 #################
 ## Eclipse
