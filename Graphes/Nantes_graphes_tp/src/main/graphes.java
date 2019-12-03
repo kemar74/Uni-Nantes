@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.*; 
+import java.lang.*;
 
 public class graphes {
 
@@ -18,16 +19,32 @@ public class graphes {
 	}
 
 	public static void main(String[] args) throws Exception {
-		List<String> lines = readFileInList("graphes.txt");
-//		String image1 = "image_colored.png";
-//		String image2 = "back_front.png";
+		String filename = "graph_mushroom.txt";
+		boolean verbose = true;
+		boolean displayGridAtEnd = false;
+		boolean displayGroups = false;
+		String displayForGroupA = "A ";
+		String displayForGroupB = "B ";
 
-//		try {
+		try {
+			long startingTime = System.currentTimeMillis();
+			if(verbose)
+				System.out.println("Starting...");
+			List<String> lines = readFileInList(filename);
+
+			if(verbose)
+				System.out.println("File '" + filename + "' read, gathering informations...");
 			Dictionary<String, Object> valeursInitiales = getImageValues(lines);
-//			Dictionary<String, Object> valeursInitiales = getImageValues(image1, image2);
 
-			Grid grid = ConstructionReseau(valeursInitiales);
+			if(verbose)
+				System.out.println("Graph of size " + (int)valeursInitiales.get("M") + "x" + (int)valeursInitiales.get("N") +
+						" being processed...");
+			Grid grid = ConstructionReseau(valeursInitiales, verbose);
 
+			if(verbose) 
+				System.out.println("Graph successfully done ("+ (float) (System.currentTimeMillis() - startingTime)/100 +" s). Applying Ford-Fulkerson's algorithm...");
+				
+			long algorithmTime = System.currentTimeMillis();
 			Node s = new Node("s");
 			Node t = new Node("t");
 			grid.addNode(s);
@@ -51,26 +68,36 @@ public class graphes {
 
 			FordFulkersonAlgorithm algo = new FordFulkersonAlgorithm(grid);
 			algo.solve("s", "t", 6);
-			System.out.println("Capacité max : " + algo.getMaximumFlowCapacity("s", "t"));
-			for(int y = 0; y < (int) valeursInitiales.get("N"); y++) {
-				for(int x = 0; x < (int) valeursInitiales.get("M"); x++) {
-					boolean isB = true;
-					Iterator<Node> it = algo.X.iterator();
-					while(it.hasNext())
-						if(it.next().equals(grid.getNode(x, y)))
-							isB = false;
-					if(isB) {
-						System.out.print("A ");
-					} else {
-						System.out.print("B ");
-					}
-				}
-				System.out.println("");
+			
+			if(verbose) {
+				System.out.println("Capacité max : " + algo.getMaximumFlowCapacity("s", "t"));
+				System.out.println("Found in " + (float)(System.currentTimeMillis() - algorithmTime)/1000 + " seconds");
 			}
-			System.out.println(grid);
-//		} catch(Exception e) {
-//			System.out.println("Abort... Reason : " + e.getClass().getName() + " says '" + e.getMessage() + "'");
-//		}
+			if(displayGroups) {
+				for(int y = 0; y < (int) valeursInitiales.get("N"); y++) {
+					for(int x = 0; x < (int) valeursInitiales.get("M"); x++) {
+						boolean isB = true;
+						Iterator<Node> it = algo.X.iterator();
+						while(it.hasNext())
+							if(it.next().equals(grid.getNode(x, y)))
+								isB = false;
+						if(isB) {
+							System.out.print(displayForGroupA);
+						} else {
+							System.out.print(displayForGroupB);
+						}
+					}
+					System.out.println("");
+				}
+			}
+			if(displayGridAtEnd)
+				System.out.println(grid);
+			
+			if(verbose)
+				System.out.println("Done. Total time : " + (float)(System.currentTimeMillis() - startingTime)/1000 + " s");
+		} catch(Exception e) {
+			System.out.println("Abort... Reason : " + e.getClass().getName() + " says '" + e.getMessage() + "'");
+		}
 	}
 	
 	public static void returnAsImage(FordFulkersonAlgorithm al, int width, int height) throws IOException {
@@ -120,8 +147,6 @@ public class graphes {
 		int currentLine = 0;
 		values.put("N", Integer.parseInt(fileContent.get(currentLine).split(" ")[0]));
 		values.put("M", Integer.parseInt(fileContent.get(currentLine).split(" ")[1]));
-		
-		Boolean hasABvalues = fileContent.size() >= 5 + 4*(int) values.get("N") -1;
 
 		currentLine ++;
 
@@ -212,6 +237,9 @@ public class graphes {
 	}
 	
 	public static Grid ConstructionReseau(Dictionary<String, Object> allValues) {
+		return ConstructionReseau(allValues, false);
+	}
+	public static Grid ConstructionReseau(Dictionary<String, Object> allValues, boolean verbose) {
 		int M = (int) allValues.get("M");
 		int N = (int) allValues.get("N");
 		Float[][] Aij = (Float[][]) allValues.get("Aij");
@@ -223,6 +251,8 @@ public class graphes {
 		Grid grid = new Grid(M, N, true, false);
 		
 		for(int i = 0; i < N; i++) {
+			if(verbose)
+				System.out.println((int) ((i/(float)N)*100) + "%");
 			for(int j = 0; j < M; j++) {
 				if( j < M - 1) {
 					// With the node on the right
