@@ -21,83 +21,81 @@ public class graphes {
 	public static void main(String[] args) throws Exception {
 		String filename = "graph_mushroom.txt";
 		boolean verbose = true;
-		boolean displayGridAtEnd = false;
-		boolean displayGroups = false;
-		String displayForGroupA = "A ";
-		String displayForGroupB = "B ";
+		boolean displayGridAtEnd = true;
+		boolean displayGroups = true;
+		String displayForGroupA = "+ ";
+		String displayForGroupB = "  ";
 
-		try {
-			long startingTime = System.currentTimeMillis();
-			if(verbose)
-				System.out.println("Starting...");
-			List<String> lines = readFileInList(filename);
+		long startingTime = System.currentTimeMillis();
+		if(verbose)
+			System.out.println("Starting...");
+		List<String> lines = readFileInList(filename);
 
-			if(verbose)
-				System.out.println("File '" + filename + "' read, gathering informations...");
-			Dictionary<String, Object> valeursInitiales = getImageValues(lines);
+		if(verbose)
+			System.out.println("File '" + filename + "' read, gathering informations...");
+		Dictionary<String, Object> valeursInitiales = getImageValues(lines);
 
-			if(verbose)
-				System.out.println("Graph of size " + (int)valeursInitiales.get("M") + "x" + (int)valeursInitiales.get("N") +
-						" being processed...");
-			Grid grid = ConstructionReseau(valeursInitiales, verbose);
-
-			if(verbose) 
-				System.out.println("Graph successfully done ("+ (float) (System.currentTimeMillis() - startingTime)/100 +" s). Applying Ford-Fulkerson's algorithm...");
-				
-			long algorithmTime = System.currentTimeMillis();
-			Node s = new Node("s");
-			Node t = new Node("t");
-			grid.addNode(s);
-			grid.addNode(t);
-			
-			float maxVal = 0;
-			for(Node n : grid.nodes) {
-				maxVal += grid.getDegree(n, true, false);
-			}
-			
-			for(int i = 0; i < grid.nodes.size() - 2; i++) { // On retire S et T du traitement
-				int x = i % (int) valeursInitiales.get("M");
-				int y = i / (int) valeursInitiales.get("N");
-
-				Float aVal = (Float) ((Float[][]) valeursInitiales.get("Aij"))[x][y];
-				Float bVal = (Float) ((Float[][]) valeursInitiales.get("Bij"))[x][y];
-				
-				grid.addEdge(s, grid.nodes.get(i), aVal*maxVal);
-				grid.addEdge(grid.nodes.get(i), t, bVal*maxVal); 
-			}
-
-			FordFulkersonAlgorithm algo = new FordFulkersonAlgorithm(grid);
-			algo.solve("s", "t", 6);
-			
-			if(verbose) {
-				System.out.println("Capacité max : " + algo.getMaximumFlowCapacity("s", "t"));
-				System.out.println("Found in " + (float)(System.currentTimeMillis() - algorithmTime)/1000 + " seconds");
-			}
-			if(displayGroups) {
-				for(int y = 0; y < (int) valeursInitiales.get("N"); y++) {
-					for(int x = 0; x < (int) valeursInitiales.get("M"); x++) {
-						boolean isB = true;
-						Iterator<Node> it = algo.X.iterator();
-						while(it.hasNext())
-							if(it.next().equals(grid.getNode(x, y)))
-								isB = false;
-						if(isB) {
-							System.out.print(displayForGroupA);
-						} else {
-							System.out.print(displayForGroupB);
-						}
-					}
-					System.out.println("");
-				}
-			}
-			if(displayGridAtEnd)
-				System.out.println(grid);
-			
-			if(verbose)
-				System.out.println("Done. Total time : " + (float)(System.currentTimeMillis() - startingTime)/1000 + " s");
-		} catch(Exception e) {
-			System.out.println("Abort... Reason : " + e.getClass().getName() + " says '" + e.getMessage() + "'");
+		if(verbose)
+			System.out.println("Graph of size " + (int)valeursInitiales.get("M") + "x" + (int)valeursInitiales.get("N") +
+					" being processed...");
+		Grid grid = ConstructionReseau(valeursInitiales, verbose);
+		
+		System.out.println(grid.getEdge("6-9", "6-10"));
+		Node s = new Node("s");
+		Node t = new Node("t");
+		grid.addNode(s);
+		grid.addNode(t);
+		
+		float maxVal = 0;
+		for(Node n : grid.nodes) {
+			maxVal += grid.getDegree(n, true, false);
 		}
+		
+		for(int i = 0; i < grid.nodes.size() - 2; i++) { // On retire S et T du traitement
+			int x = i % (int) valeursInitiales.get("M");
+			int y = i / (int) valeursInitiales.get("N");
+
+			Float aVal = (Float) ((Float[][]) valeursInitiales.get("Aij"))[x][y];
+			Float bVal = (Float) ((Float[][]) valeursInitiales.get("Bij"))[x][y];
+			
+			grid.addEdge(s, grid.nodes.get(i), aVal*maxVal);
+			grid.addEdge(grid.nodes.get(i), t, bVal*maxVal); 
+		}
+
+		if(verbose) 
+			System.out.println("Graph successfully done ("+ (float) (System.currentTimeMillis() - startingTime)/1000 +" s). Applying Ford-Fulkerson's algorithm...");
+			
+		long algorithmTime = System.currentTimeMillis();
+		FordFulkersonAlgorithm algo = new FordFulkersonAlgorithm(grid);
+		algo.solve("s", "t");
+		
+		if(verbose) {
+			System.out.println("Capacité max : " + algo.getMaximumFlowCapacity("s", "t"));
+			System.out.println("Found in " + (float)((System.currentTimeMillis() - algorithmTime)/1000.0) + " seconds");
+		}
+
+		if(displayGroups) {
+			for(int y = 0; y < (int) valeursInitiales.get("N"); y++) {
+				for(int x = 0; x < (int) valeursInitiales.get("M"); x++) {
+					boolean isB = true;
+					Iterator<Node> it = algo.X.iterator();
+					while(it.hasNext())
+						if(it.next().equals(grid.getNode(x, y)))
+							isB = false;
+					if(isB) {
+						System.out.print(displayForGroupA);
+					} else {
+						System.out.print(displayForGroupB);
+					}
+				}
+				System.out.println("");
+			}
+		}
+		if(displayGridAtEnd)
+			System.out.println(grid);
+		
+		if(verbose)
+			System.out.println("Done. Total time : " + (float)((System.currentTimeMillis() - startingTime)/1000.0) + " s");
 	}
 	
 	public static void returnAsImage(FordFulkersonAlgorithm al, int width, int height) throws IOException {
@@ -256,8 +254,8 @@ public class graphes {
 			for(int j = 0; j < M; j++) {
 				if( j < M - 1) {
 					// With the node on the right
-					Float toTheRight = Bij[i][j + 1] + Aij[i][j] + Phorizontal[i][j];
-					Float toTheLeft  = Aij[i][j + 1] + Bij[i][j] + Phorizontal[i][j];
+					Float toTheRight = Aij[i][j + 1] + Bij[i][j] + Phorizontal[i][j];
+					Float toTheLeft  = Bij[i][j + 1] + Aij[i][j] + Phorizontal[i][j];
 //					System.out.println(i + " " + j + " (" + N + " " + M + ")");
 					grid.addEdge(grid.getNode(i, j), grid.getNode(i, j + 1), toTheRight);
 					grid.addEdge(grid.getNode(i, j + 1), grid.getNode(i, j), toTheLeft);
@@ -265,14 +263,13 @@ public class graphes {
 				
 				if(i < N - 1) {
 					// With the node under
-					Float toBottom = Bij[i + 1][j] + Aij[i][j] + Pvertical[i][j];
-					Float toTop    = Aij[i + 1][j] + Bij[i][j] + Pvertical[i][j];
+					Float toBottom = Aij[i + 1][j] + Bij[i][j] + Pvertical[i][j];
+					Float toTop    = Bij[i + 1][j] + Aij[i][j] + Pvertical[i][j];
 					grid.addEdge(grid.getNode(i, j), grid.getNode(i + 1, j), toBottom);
 					grid.addEdge(grid.getNode(i + 1, j), grid.getNode(i, j), toTop);
 				}
 			}
 		}
-//		grid.normalizeEdges();
 		return grid;
 	}
 	
@@ -356,6 +353,35 @@ public class graphes {
 		float mean = adding/3;
 		float normalized = mean / 255;
 		return normalized;
+	}
+	
+	public static Graph getTestGrid() {
+		Graph graph = new Graph(8);
+		graph.getNode(0).ID = "s";
+		graph.getNode(1).ID = "2";
+		graph.getNode(2).ID = "3";
+		graph.getNode(3).ID = "4";
+		graph.getNode(4).ID = "5";
+		graph.getNode(5).ID = "6";
+		graph.getNode(6).ID = "7";
+		graph.getNode(7).ID = "t";
+
+		graph.addEdge("s", "2", 10);
+		graph.addEdge("s", "3", 5);
+		graph.addEdge("s", "4", 15);
+		graph.addEdge("2", "3", 4);
+		graph.addEdge("2", "5", 9);
+		graph.addEdge("2", "6", 15);
+		graph.addEdge("3", "4", 4);
+		graph.addEdge("3", "6", 8);
+		graph.addEdge("4", "7", 30);
+		graph.addEdge("5", "6", 15);
+		graph.addEdge("5", "t", 10);
+		graph.addEdge("6", "7", 15);
+		graph.addEdge("6", "t", 10);
+		graph.addEdge("7", "3", 6);
+		graph.addEdge("7", "t", 10);
+		return graph;
 	}
 
 }

@@ -15,11 +15,8 @@ public class FordFulkersonAlgorithm extends GraphAlgorithmWithFlow {
 
 	@Override
 	public Graph solve(Node from, Node to) {
-		return solve(from, to, 0);
-	}
-	public Graph solve(Node from, Node to, int minNodes) {
 		List<Node> path = null;
-		while((path = chaineAmeliorante(from, to, minNodes)) != null && getMinimumCapacityOnPath(path) > 0) {
+		while((path = chaineAmeliorante(from, to)) != null && getMinimumCapacityOnPath(path) > 0) {
 			Float minimum = getMinimumCapacityOnPath(path);
 			addFlowToGraph(path, minimum);
 			Collections.reverse(path);
@@ -30,39 +27,36 @@ public class FordFulkersonAlgorithm extends GraphAlgorithmWithFlow {
 		this.getMinCut(from, to);
 		return this.graph;
 	}
-	public Graph solve(String from, String to, int minNodes) {
-		return solve(this.graph.getNode(from), this.graph.getNode(to), minNodes);
-	}
 	public Graph solve(String from, String to) {
-		return solve(from, to, 0);
+		return solve(this.graph.getNode(from), this.graph.getNode(to));
 	}
 	
-	public Float getMaximumFlowCapacity(Node from, Node to, int minNodes) {
-		solve(from, to, minNodes);
+	public Float getMaximumFlowCapacity(Node from, Node to, boolean includeSourceAndEnd) {
+		solve(from, to);
 		
-		Float maxCapacity = new Float(0);/*
-		for(Node n : this.graph.getSuccessors(from)) {
-			maxCapacity += this.graph.getEdge(from, n);
-		}*/
-
+		float maxCapacity = 0;
 		for(Node a : this.X) {
 			for(Node b : this.Y) {
-				if(!(a.equals(from) || a.equals(to) || b.equals(from) || b.equals(to)) && this.graph.getEdge(a, b) > 0 && this.graph.getEdge(a, b) - this.capacities.getEdge(a, b) == 0) {
-					maxCapacity += this.capacities.getEdge(b, a);
-//					System.out.println(b + " -> " + a + " = " + this.capacities.getEdge(b, a) + " (maxCapacity = " + maxCapacity + ")");
+				boolean isSourceOrEnd = (a.equals(from) || a.equals(to) || b.equals(from) || b.equals(to));
+				if(includeSourceAndEnd)
+					isSourceOrEnd = false; // Cette condition ne compte plus
+				float capacity = this.capacities.getEdge(a, b);
+				float flow = this.graph.getEdge(a, b);
+				if(capacity > 0 && flow == capacity && !isSourceOrEnd) {
+					maxCapacity += this.capacities.getEdge(a, b);
 				}
 			}
 		}
 		return maxCapacity;
 	}
 	public Float getMaximumFlowCapacity(Node from, Node to) {
-		return getMaximumFlowCapacity(from, to, 0);
+		return getMaximumFlowCapacity(from, to, false);
 	}
 	public Float getMaximumFlowCapacity(String from, String to) {
-		return getMaximumFlowCapacity(from, to, 0);
+		return getMaximumFlowCapacity(from, to, false);
 	}
-	public Float getMaximumFlowCapacity(String from, String to, int minNodes) {
-		return getMaximumFlowCapacity(this.graph.getNode(from), this.graph.getNode(to), minNodes);
+	public Float getMaximumFlowCapacity(String from, String to, boolean includeSourceAndEnd) {
+		return getMaximumFlowCapacity(this.graph.getNode(from), this.graph.getNode(to), includeSourceAndEnd);
 	}
 	
 	public Float getMinimumCapacityOnPath(List<Node> path) {
@@ -103,7 +97,7 @@ public class FordFulkersonAlgorithm extends GraphAlgorithmWithFlow {
 				if(copy)
 					this.Y.add(residuel.getNode(i));
 			}
-		}
+		}		
 	}
 	public void getMinCut(String from, String to) {
 		this.getMinCut(this.graph.getNode(from), this.graph.getNode(to));

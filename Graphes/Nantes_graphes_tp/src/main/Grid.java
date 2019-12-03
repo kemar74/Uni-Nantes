@@ -27,6 +27,7 @@ public class Grid extends Graph {
 		this.width = width;
 		this.height = height;
 		this.oriented = oriented;
+		this.edges.ensureCapacity(width * height * 4);
 		
 		if(connectNodes) {
 			for(int i = 0; i < width; i++) {

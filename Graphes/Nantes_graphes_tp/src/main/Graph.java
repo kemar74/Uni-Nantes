@@ -3,8 +3,8 @@ package main;
 import java.util.*;
 
 public class Graph implements Cloneable {
-	public List<Node> nodes;
-	public List<Edge> edges;
+	public ArrayList<Node> nodes;
+	public ArrayList<Edge> edges;
 	public Boolean oriented;
 
 	public Graph() {
@@ -20,7 +20,7 @@ public class Graph implements Cloneable {
 		this.oriented = copy.oriented;
 	}
 	public Graph(int numberOfNodes) {
-		this(0, true);
+		this(numberOfNodes, true);
 	}
 	public Graph(int numberOfNodes, Boolean isOriented) {
 		this.edges = new ArrayList<Edge>();
@@ -103,7 +103,7 @@ public class Graph implements Cloneable {
 	}
 	public Node getNode(String ID) {
 		for(int i = 0; i < this.nodes.size(); i++) {
-			if(this.nodes.get(i).ID == ID)
+			if(this.nodes.get(i).ID.equals(ID))
 				return this.nodes.get(i);
 		}
 		return null;
@@ -133,6 +133,9 @@ public class Graph implements Cloneable {
 		this.edges.clear();
 	}
 	
+	public Float getEdge(String from, String to) {
+		return this.getEdge(this.getNode(from), this.getNode(to));
+	}
 	public Float getEdge(Node from, Node to) {
 		for(Edge e : this.edges) {
 			if(from.equals(e.from) && to.equals(e.to))
