@@ -201,7 +201,7 @@ public class Graph implements Cloneable {
 	}
 	
 	public Float getDegree(Node n, boolean sortant, boolean entrant) {
-		Float total = new Float(0);
+		float total = 0;
 		for(Edge e : this.edges) {
 			if(entrant && e.to == n)
 				total += e.weight;
@@ -218,7 +218,7 @@ public class Graph implements Cloneable {
 	}
 	
 	public void normalizeEdges() {
-		Float maxValue = new Float(0);
+		float maxValue = 0;
 		for(Edge e : this.edges) {
 			if(e.weight > maxValue)
 				maxValue = e.weight;

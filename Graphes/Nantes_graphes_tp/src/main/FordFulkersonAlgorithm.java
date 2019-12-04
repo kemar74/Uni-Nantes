@@ -60,7 +60,7 @@ public class FordFulkersonAlgorithm extends GraphAlgorithmWithFlow {
 	}
 	
 	public Float getMinimumCapacityOnPath(List<Node> path) {
-		Float minimum = new Float(0);
+		float minimum = 0;
 		for(int i = 0; i < path.size() - 1; i++) {
 			if(minimum == 0 || minimum > this.capacities.getEdge(path.get(i), path.get(i + 1)) - this.graph.getEdge(path.get(i), path.get(i + 1)))
 				minimum = this.capacities.getEdge(path.get(i), path.get(i + 1)) - this.graph.getEdge(path.get(i), path.get(i + 1));
