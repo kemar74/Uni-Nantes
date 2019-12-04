@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class ResolutionGraphes {
-	private static FordFulkersonAlgorithm algo;
+	private static PreflotAlgorithm algo;
 	private static Grid grid;
 	public static void main(String[] args) throws Exception {
 //		try {
@@ -53,7 +53,9 @@ public class ResolutionGraphes {
 				System.out.println("Graph successfully done ("+ (float) (System.currentTimeMillis() - startingTime)/1000 +" s). Applying Ford-Fulkerson's algorithm...");
 				
 			long algorithmTime = System.currentTimeMillis();
-			algo = new FordFulkersonAlgorithm(grid);
+			//PreflotAlgorithm algo2 = new PreflotAlgorithm(grid);
+			//algo2.solve("s", "t");
+			algo = new PreflotAlgorithm(grid);
 			ResoudreBinIm();
 			
 			if(verbose) {
@@ -79,7 +81,7 @@ public class ResolutionGraphes {
 				}
 			}
 			if(returnedImage != "") {
-				returnAsImage(algo, (int) valeursInitiales.get("N"), (int) valeursInitiales.get("M"), returnedImage, 100);
+				returnAsImage(algo, (int) valeursInitiales.get("M"), (int) valeursInitiales.get("N"), returnedImage, 100);
 				System.out.println("Image enregistrée sous '" + returnedImage + "'.");
 		        Desktop desktop = Desktop.getDesktop();
 		        desktop.open(new File(returnedImage));
@@ -158,12 +160,12 @@ public class ResolutionGraphes {
 		
 		for(int i = 0; i < pHorizontalValues.length; i++) { 
 			currentLine ++;
-			if(fileContent.get(currentLine).isEmpty()) {
+			if(fileContent.get(currentLine).isEmpty() && (int) values.get("M") > 1) {
 				throw new Exception("Line " + (currentLine+1) + " of the file is empty, "
 						+ "but it should contain the " + i +"rd line of 'P horizontal' values");
 			}
 			String[] lineSplitted = fileContent.get(currentLine).split(" ");
-			if(lineSplitted.length != (int) values.get("M") - 1) {
+			if(lineSplitted.length != (int) values.get("M") - 1 && (int) values.get("M") > 1) {
 				throw new Exception("Line " + (currentLine+1) + " doesn't contain enough "
 						+ "values (" + lineSplitted.length + " values past, " 
 						+ ((int) values.get("M") - 1) + " required)");
@@ -239,7 +241,7 @@ public class ResolutionGraphes {
 		
 		for(int i = 0; i < M; i++) {
 			if(verbose)
-				System.out.println((int) ((i/(float)N)*100) + "%");
+				System.out.println((int) ((i/(float)M)*100) + "%");
 			for(int j = 0; j < N; j++) {
 				if(i < M - 1) {
 					// With the node on the right
@@ -285,7 +287,7 @@ public class ResolutionGraphes {
 	}
 	
 	public static float CalculFlotMax(String from, String to) {
-		algo.solve(from, to);
+//		algo.solve(from, to);
 		return algo.getMaximumFlowCapacity(from, to);
 	}
 	
@@ -334,12 +336,11 @@ public class ResolutionGraphes {
 	}
 	
 
-	public static BufferedImage returnAsImage(FordFulkersonAlgorithm al, int width, int height, String path) throws IOException {
+	public static BufferedImage returnAsImage(GraphAlgorithmWithFlow al, int width, int height, String path) throws IOException {
 		return returnAsImage(al, width, height, path, 1);
 	}
-	public static BufferedImage returnAsImage(FordFulkersonAlgorithm al, int width, int height, String path, float scale) throws IOException {
+	public static BufferedImage returnAsImage(GraphAlgorithmWithFlow al, int width, int height, String path, float scale) throws IOException {
 
-		 
         // Constructs a BufferedImage of one of the predefined image types.
         BufferedImage bufferedImage = new BufferedImage((int) Math.ceil(width*scale), (int) Math.ceil(height*scale), BufferedImage.TYPE_INT_RGB);
 
@@ -352,6 +353,8 @@ public class ResolutionGraphes {
 	        			bufferedImage.setRGB((int) Math.floor(x*scale +i), (int) Math.floor(y * scale +j), Color.RED.getRGB());
         	} catch(NumberFormatException e) {
         		
+        	} catch(ArrayIndexOutOfBoundsException e) {
+        		
         	}
         }
         for(Node n : al.Y) {
@@ -362,6 +365,8 @@ public class ResolutionGraphes {
 	        		for(int j = 0; j < scale; j++)
 	        			bufferedImage.setRGB((int) Math.floor(x*scale +i), (int) Math.floor(y * scale +j), Color.GREEN.getRGB());
         	} catch(NumberFormatException e) {
+        		
+        	} catch(ArrayIndexOutOfBoundsException e) {
         		
         	}
         }

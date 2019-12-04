@@ -143,6 +143,14 @@ public class Graph implements Cloneable {
 		}
 		return (float) 0;
 	}
+	
+	public Edge getEdge(Node from, Node to, boolean reallyWantsTheEdge) {
+		for(Edge e : this.edges) {
+			if(e.equals(new Edge(from, to)))
+				return e;
+		}
+		return null;
+	}
 
 	public List<Node> getSuccessors(Node node) {
 		List<Node> list = new ArrayList<Node>();

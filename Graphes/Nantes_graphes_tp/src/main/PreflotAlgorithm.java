@@ -30,11 +30,9 @@ public class PreflotAlgorithm extends GraphAlgorithmWithFlow {
 		
 		while(list.size() > 0) {
 			Node current = list.get(0);
-			System.out.println(current.displayForPreflot());
 			list.remove(current);
 			int H = current.hauteur;
 			decharger(current);
-			System.out.println(current.displayForPreflot());
 			if(current.hauteur > H) {
 				list.add(0, current);
 			}
@@ -90,6 +88,44 @@ public class PreflotAlgorithm extends GraphAlgorithmWithFlow {
 			continuer = elever(node);
 		}
 		return true;
+	}
+	
+
+	public void getMinCut(Node from, Node to) {
+		for(Node n : this.graph.nodes) {
+			if(n.excedent > 0)
+				this.Y.add(n);
+			else
+				this.X.add(n);
+		}
+	}
+	public void getMinCut(String from, String to) {
+		this.getMinCut(this.graph.getNode(from), this.graph.getNode(to));
+	}
+	
+	public Float getMaximumFlowCapacity(Node from, Node to, boolean includeSourceAndEnd) {
+//		solve(from, to);
+		getMinCut(from, to);
+		
+		float maxCapacity = 0;
+		for(Node a : this.X) {
+			for(Node b : this.Y) {
+				boolean isSourceOrEnd = (a.equals(from) || a.equals(to) || b.equals(from) || b.equals(to));
+				if(includeSourceAndEnd)
+					isSourceOrEnd = false; // Cette condition ne compte plus
+				float capacity = this.capacities.getEdge(a, b);
+				float flow = this.graph.getEdge(a, b);
+				if(capacity > 0 && flow == capacity && !isSourceOrEnd) {
+					maxCapacity += this.capacities.getEdge(b, a);
+				}
+				float capacity2 = this.capacities.getEdge(b, a);
+				float flow2 = this.graph.getEdge(b, a);
+				if(capacity2 > 0 && flow2 == capacity2 && !isSourceOrEnd) {
+					maxCapacity += this.capacities.getEdge(b, a);
+				}
+			}
+		}
+		return maxCapacity;
 	}
 
 }

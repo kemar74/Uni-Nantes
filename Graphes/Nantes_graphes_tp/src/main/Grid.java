@@ -19,8 +19,8 @@ public class Grid extends Graph {
 		this(width, height, oriented, connectNodes, 1);
 	}
 	public Grid(int width, int height, Boolean oriented, Boolean connectNodes, float valueOfConnexion) {
-		for(int i = 0; i < width; i++) {
-			for(int j = 0; j < height; j++) {
+		for(int i = 0; i < height; i++) {
+			for(int j = 0; j < width; j++) {
 				this.addNode(new Node(i + "-" + j));
 			}
 		}
@@ -62,10 +62,10 @@ public class Grid extends Graph {
 		String output = "";
 		output += "Grille " + this.width + "x" + this.height + " (" + this.edges.size() + " liens)";
 		
-		for(int i = 0; i < this.width; i++) {
+		for(int i = 0; i < this.height; i++) {
 			output += "\n";
 			for(int j = 0; j < this.width; j++) {
-				output += this.getNode(i, j).ID + " ";
+				output += this.getNode(j, i).ID + " ";
 			}
 		}
 		output += "\n" + this.displayConnections();
