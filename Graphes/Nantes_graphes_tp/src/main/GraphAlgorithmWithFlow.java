@@ -98,7 +98,7 @@ abstract public class GraphAlgorithmWithFlow extends GraphAlgorithm {
 	
 
 	public Float getMaximumFlowCapacity(Node from, Node to, boolean includeSourceAndEnd) {
-//		solve(from, to);
+		solve(from, to);
 		getMinCut(from, to);
 		
 		float maxCapacity = 0;

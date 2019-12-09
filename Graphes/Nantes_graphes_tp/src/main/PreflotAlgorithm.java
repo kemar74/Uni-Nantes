@@ -3,15 +3,21 @@ package main;
 import java.util.*;
 
 public class PreflotAlgorithm extends GraphAlgorithmWithFlow {
-
+	public boolean solved = false;
+	
 	public PreflotAlgorithm(Graph graph) {
 		super(graph);
 	}
 	
 	public Graph solve(Node from, Node to) {
-		
+		if(this.solved)
+			return this.graph;
+		this.solved = true;
 		this.graph.getNode(from).hauteur = this.graph.nodes.size();
-		
+		for(int i = 0; i < this.graph.nodes.size(); i++) {
+			this.graph.nodes.get(i).excedent = 0;
+			this.capacities.nodes.get(i).excedent = 0;
+		}
 		for(Node n : this.capacities.getSuccessors(from)) {
 			float edgeValue = this.capacities.getEdge(from, n);
 			this.graph.addEdge(from, n, edgeValue);
