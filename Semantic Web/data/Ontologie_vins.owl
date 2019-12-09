@@ -1,0 +1,249 @@
+@prefix : <http://www.semanticweb.org/march/ontologies/2019/11/untitled-ontology-12#> .
+@prefix mo: <http://my_onto.org/> .
+@prefix dbp: <http://www.dbpedia.org/property/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wine: <http://www.exemple.com/rdf/wine-reviews/> .
+@prefix schema: <http://schema.org/> .
+@prefix pollution: <file:///C:/Users/Eclegv/Desktop/tarql-1.2/bin/> .
+@base <http://www.semanticweb.org/march/ontologies/2019/11/untitled-ontology-12> .
+
+<http://www.semanticweb.org/march/ontologies/2019/11/untitled-ontology-12> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  file:///C:/Users/Eclegv/Desktop/tarql-1.2/bin/DateMeasure
+pollution:DateMeasure rdf:type owl:ObjectProperty ;
+                      rdfs:domain pollution:mesurePollution .
+
+
+###  file:///C:/Users/Eclegv/Desktop/tarql-1.2/bin/concentration
+pollution:concentration rdf:type owl:ObjectProperty ;
+                        rdfs:domain pollution:mesurePollution .
+
+
+###  file:///C:/Users/Eclegv/Desktop/tarql-1.2/bin/concentrationCO
+pollution:concentrationCO rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf pollution:concentration .
+
+
+###  file:///C:/Users/Eclegv/Desktop/tarql-1.2/bin/concentrationNO2
+pollution:concentrationNO2 rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf pollution:concentration .
+
+
+###  file:///C:/Users/Eclegv/Desktop/tarql-1.2/bin/concentrationO3
+pollution:concentrationO3 rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf pollution:concentration .
+
+
+###  file:///C:/Users/Eclegv/Desktop/tarql-1.2/bin/concentrationPM5
+pollution:concentrationPM5 rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf pollution:concentration .
+
+
+###  http://dbpedia.org/ontology/city
+<http://dbpedia.org/ontology/city> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain pollution:mesurePollution ;
+                                   rdfs:range <http://dbpedia.org/ontology/PopulatedPlace> .
+
+
+###  http://dbpedia.org/ontology/country
+<http://dbpedia.org/ontology/country> rdf:type owl:ObjectProperty ;
+                                      rdfs:subPropertyOf owl:topObjectProperty ;
+                                      rdf:type owl:FunctionalProperty ;
+                                      rdfs:domain <http://dbpedia.org/ontology/PopulatedPlace> ,
+                                                  <http://dbpedia.org/ontology/Wine> ,
+                                                  <http://dbpedia.org/ontology/Winery> ;
+                                      rdfs:range <http://dbpedia.org/ontology/Country> .
+
+
+###  http://dbpedia.org/ontology/growingGrape
+<http://dbpedia.org/ontology/growingGrape> rdf:type owl:ObjectProperty ,
+                                                    owl:FunctionalProperty ;
+                                           rdfs:domain <http://dbpedia.org/ontology/Wine> ;
+                                           rdfs:range <http://dbpedia.org/ontology/Grape> .
+
+
+###  http://dbpedia.org/ontology/id
+<http://dbpedia.org/ontology/id> rdf:type owl:ObjectProperty ;
+                                 rdfs:domain <http://dbpedia.org/ontology/Wine> .
+
+
+###  http://dbpedia.org/ontology/name
+<http://dbpedia.org/ontology/name> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain <http://dbpedia.org/ontology/Continent> ,
+                                               <http://dbpedia.org/ontology/Country> ,
+                                               <http://dbpedia.org/ontology/Wine> .
+
+
+###  http://dbpedia.org/ontology/price
+<http://dbpedia.org/ontology/price> rdf:type owl:ObjectProperty ;
+                                    rdfs:domain <http://dbpedia.org/ontology/Wine> .
+
+
+###  http://dbpedia.org/ontology/province
+<http://dbpedia.org/ontology/province> rdf:type owl:ObjectProperty ;
+                                       rdfs:domain <http://dbpedia.org/ontology/Wine> ;
+                                       rdfs:range <http://dbpedia.org/ontology/Province> .
+
+
+###  http://dbpedia.org/ontology/rating
+<http://dbpedia.org/ontology/rating> rdf:type owl:ObjectProperty ;
+                                     rdfs:domain <http://dbpedia.org/ontology/Wine> .
+
+
+###  http://dbpedia.org/ontology/region
+<http://dbpedia.org/ontology/region> rdf:type owl:ObjectProperty ,
+                                              owl:FunctionalProperty ;
+                                     rdfs:domain <http://dbpedia.org/ontology/Wine> ;
+                                     rdfs:range <http://dbpedia.org/ontology/Region> .
+
+
+###  http://my_onto.org/hasEconomyValue
+mo:hasEconomyValue rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf mo:hasIndicator .
+
+
+###  http://my_onto.org/hasFamilyValue
+mo:hasFamilyValue rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf mo:hasIndicator .
+
+
+###  http://my_onto.org/hasFreedomValue
+mo:hasFreedomValue rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf mo:hasIndicator .
+
+
+###  http://my_onto.org/hasGenerosityValue
+mo:hasGenerosityValue rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf mo:hasIndicator .
+
+
+###  http://my_onto.org/hasHappinessValue
+mo:hasHappinessValue rdf:type owl:ObjectProperty .
+
+
+###  http://my_onto.org/hasHealthValue
+mo:hasHealthValue rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf mo:hasIndicator .
+
+
+###  http://my_onto.org/hasIndicator
+mo:hasIndicator rdf:type owl:ObjectProperty ;
+                rdfs:domain <http://dbpedia.org/ontology/PopulatedPlace> .
+
+
+###  http://my_onto.org/hasTrustValue
+mo:hasTrustValue rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf mo:hasIndicator .
+
+
+###  http://my_onto.org/hasWhiskerHighValue
+mo:hasWhiskerHighValue rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf mo:hasIndicator .
+
+
+###  http://www.exemple.com/rdf/wine-reviews/winery
+wine:winery rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain <http://dbpedia.org/ontology/Wine> ;
+            rdfs:range <http://dbpedia.org/ontology/Winery> .
+
+
+###  http://www.semanticweb.org/march/ontologies/2019/11/untitled-ontology-12#hasDystopiaValue
+:hasDystopiaValue rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf mo:hasIndicator .
+
+
+###  http://www.semanticweb.org/march/ontologies/2019/11/untitled-ontology-12#hasWhiskerLowValue
+:hasWhiskerLowValue rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf mo:hasIndicator .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  file:///C:/Users/Eclegv/Desktop/tarql-1.2/bin/mesurePollution
+pollution:mesurePollution rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/Bevrage
+<http://dbpedia.org/ontology/Bevrage> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/City
+<http://dbpedia.org/ontology/City> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://dbpedia.org/ontology/PopulatedPlace> .
+
+
+###  http://dbpedia.org/ontology/Continent
+<http://dbpedia.org/ontology/Continent> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://dbpedia.org/ontology/PopulatedPlace> .
+
+
+###  http://dbpedia.org/ontology/Country
+<http://dbpedia.org/ontology/Country> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://dbpedia.org/ontology/PopulatedPlace> .
+
+
+###  http://dbpedia.org/ontology/Grape
+<http://dbpedia.org/ontology/Grape> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/PopulatedPlace
+<http://dbpedia.org/ontology/PopulatedPlace> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/Province
+<http://dbpedia.org/ontology/Province> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://dbpedia.org/ontology/Region> .
+
+
+###  http://dbpedia.org/ontology/Region
+<http://dbpedia.org/ontology/Region> rdf:type owl:Class ;
+                                     rdfs:subClassOf <http://dbpedia.org/ontology/PopulatedPlace> .
+
+
+###  http://dbpedia.org/ontology/Wine
+<http://dbpedia.org/ontology/Wine> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://dbpedia.org/ontology/Bevrage> .
+
+
+###  http://dbpedia.org/ontology/Winery
+<http://dbpedia.org/ontology/Winery> rdf:type owl:Class .
+
+
+###  http://www.exemple.com/rdf/wine-reviews/Dessert_Wine
+wine:Dessert_Wine rdf:type owl:Class ;
+                  rdfs:subClassOf <http://dbpedia.org/ontology/Wine> .
+
+
+###  http://www.exemple.com/rdf/wine-reviews/Red_Wine
+wine:Red_Wine rdf:type owl:Class ;
+              rdfs:subClassOf <http://dbpedia.org/ontology/Wine> .
+
+
+###  http://www.exemple.com/rdf/wine-reviews/Rose_Wine
+wine:Rose_Wine rdf:type owl:Class ;
+               rdfs:subClassOf <http://dbpedia.org/ontology/Wine> .
+
+
+###  http://www.exemple.com/rdf/wine-reviews/Sparkling_Wine
+wine:Sparkling_Wine rdf:type owl:Class ;
+                    rdfs:subClassOf <http://dbpedia.org/ontology/Wine> .
+
+
+###  http://www.exemple.com/rdf/wine-reviews/White_Wine
+wine:White_Wine rdf:type owl:Class ;
+                rdfs:subClassOf <http://dbpedia.org/ontology/Wine> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
