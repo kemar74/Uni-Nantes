@@ -127,7 +127,8 @@ mo:hasGenerosityValue rdf:type owl:ObjectProperty ;
 
 
 ###  http://my_onto.org/hasHappinessValue
-mo:hasHappinessValue rdf:type owl:ObjectProperty .
+mo:hasHappinessValue rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf mo:hasIndicator .
 
 
 ###  http://my_onto.org/hasHealthValue

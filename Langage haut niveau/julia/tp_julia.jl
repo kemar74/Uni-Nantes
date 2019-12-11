@@ -1,4 +1,39 @@
-include("CPUTime.jl")
+# Code importé de CPUTime :
+function CPUtime_us()
+    rusage = Libc.malloc(4*sizeof(Clong) + 14*sizeof(UInt64))  # sizeof(uv_rusage_t); this is different from sizeof(rusage)
+    ccall(:uv_getrusage, Cint, (Ptr{Nothing},), rusage)
+    utime = UInt64(1000000)*unsafe_load(convert(Ptr{Clong}, rusage + 0*sizeof(Clong))) +    # user CPU time
+                            unsafe_load(convert(Ptr{Clong}, rusage + 1*sizeof(Clong)))
+    stime = UInt64(1000000)*unsafe_load(convert(Ptr{Clong}, rusage + 2*sizeof(Clong))) +    # system CPU time
+                            unsafe_load(convert(Ptr{Clong}, rusage + 3*sizeof(Clong)))
+    ttime = utime + stime  # total CPU time
+    Libc.free(rusage)
+    return ttime
+end
+
+function CPUtic()
+    t0 = CPUtime_us()
+    task_local_storage(:CPUTIMERS, (t0, get(task_local_storage(), :CPUTIMERS, ())))
+    return t0
+end
+
+function CPUtoq()
+    t1 = CPUtime_us()
+    timers = get(task_local_storage(), :CPUTIMERS, ())
+    if timers === ()
+        error("CPUtoc() without CPUtic()")
+    end
+    t0 = timers[1]::UInt64
+    task_local_storage(:CPUTIMERS, timers[2])
+    (t1-t0)/1e6
+end
+
+function CPUtoc()
+    t = CPUtoq()
+    println("elapsed CPU time: ", t, " seconds")
+    return t
+end
+
 
 
 
@@ -33,10 +68,10 @@ function relie!(G::tabgraph, s::Int, d::Int, p::Real)
 end
 
 function delier!(G::tabgraph, s::Int, d::Int)
-	G.pds[s, d] = undef
+	G.pds[s, d] = Inf
 	G.adj[s, d] = false
 	G.ne -= 1
-	G.pred[d, s] = undef
+	G.pred[d, s] = -1
 	G.predUpdated = false
 
 	return G
@@ -181,6 +216,9 @@ function plusCourtChemin(G::tabgraph, from::Int, to::Int)
 	chemin = [to]
 	while(to != from)
 		to = G.pred[from, to]
+		if(to == -1)
+			return false
+		end
 		chemin = [to chemin]
 	end
 	return chemin
@@ -224,19 +262,25 @@ function testFunction(func, graph::tabgraph, nbIter::Int)
 	return [CPUtoq() time]
 end
 
-function comparerFermeturesTransitives(nbIterations::Int)
-	println("Fermeture transitive sur un graphe avec $monGraphe.nv noeuds et $monGraphe.ne arcs : ")
+function comparerFermeturesTransitives(nbIterations::Int, G::tabgraph)
+	println("Fermeture transitive sur un graphe avec $(monGraphe.nv) noeuds et $(monGraphe.ne) arcs : ")
 	t1 = testFunction(connexitéforte, G, nbIterations)
 	t2 = testFunction(connexitéforte_produit, G, nbIterations)
 	println("Algo de Warshall       : CPU = " * string(t1[1]) * "s --- réel = " * string(t1[2]) * "s")
 	println("Avec produit matriciel : CPU = " * string(t2[1]) * "s --- réel = " * string(t2[2]) * "s")
 	println("(Temps pour $nbIterations itérations)")
+	println("Le produit matriciel a mis " * string(round((t2[2]/t1[2]) * 100 - 100, digits=2)) * "% de temps en plus")
 end
 
 function displayChemin(G::tabgraph, from::Int, to::Int)
 	liste = plusCourtChemin(G, from, to)
 	poids = 0
 	affichage = ""
+	if(liste == false) 
+		affichage = "Aucun chemin n'a été trouvé entre $from et $to"
+		return affichage
+	end
+
 	for i = 1:size(liste, 2)
 		affichage *= string(liste[i])
 		if(i < size(liste, 2))
@@ -256,13 +300,13 @@ function Input(prompt::String="")
 	choix = readline()
 end
 
-function getNumericResponse(prompt::String="", maxValue::Int=-1)::Int
+function getNumericResponse(prompt::String="", maxValue::Number=Inf, minValue::Number=-Inf)::Int
 	choix = 0
 	try
 		choix = Input(prompt)
 		choix = parse(Int, choix)
-		if(maxValue > 0 && choix > maxValue)
-			print("Merci de donner une valeur inférieure à " * string(maxValue) * "\n")
+		if(minValue > choix || choix > maxValue)
+			print("Merci de donner une valeur supérieure à " * string(minValue) * " et inférieure à " * string(maxValue) * "\n")
 			return getNumericResponse(prompt)
 		end
 	catch
@@ -283,7 +327,7 @@ function menu()
 	println("5) Chemin le plus court")
 	println("6) Quitter")
 
-	choix = getNumericResponse("Votre choix : ", 6)
+	choix = getNumericResponse("Votre choix : ", 6, 1)
 	
 
 	if(choix == 1)
@@ -303,7 +347,7 @@ end
 
 function menuGrapheFromFile()
 	println("--- Création du graphe depuis un fichier ---")
-	newSize = getNumericResponse("Nombre de sommets sur le graphe?")
+	newSize = getNumericResponse("Nombre de sommets sur le graphe?", Inf, 1)
 	global monGraphe = tabgraph(newSize)
 	repeat = true
 	while(repeat)
@@ -319,9 +363,9 @@ end
 
 function menuGraphAlea()
 	println("--- Création du graphe aléatoire ---")
-	newSize = getNumericResponse("Nombre de sommets sur le graphe?")
+	newSize = getNumericResponse("Nombre de sommets sur le graphe?", Inf, 1)
 	global monGraphe = tabgraph(newSize)
-	nbEdges = getNumericResponse("Nombre d'arcs à génerer (-1 pour utiliser " * string(newSize) * "^2 )")
+	nbEdges = getNumericResponse("Nombre d'arcs à génerer (-1 pour utiliser " * string(newSize) * "^2 [" * string(newSize*newSize) * "])", Inf, 0)
 	minValue = getNumericResponse("Valeur minimale d'un arc?")
 	maxValue = getNumericResponse("Valeur maximale d'un arc?")
 	useIntegers = -1
@@ -349,7 +393,7 @@ function afficherGraph()
 	println("3) Voir le tableau de prédécesseurs")
 	println("4) Retour")
 
-	choix = getNumericResponse("Votre choix : ", 4)
+	choix = getNumericResponse("Votre choix : ", 4, 1)
 
 	if(choix == 1)
 		println(prettyDisplay2DArray(monGraphe.adj))
@@ -367,15 +411,15 @@ function menuFermetureTransitive()
 	println("2) Avec des produits vectoriels")
 	println("3) Comparer les deux méthodes")
 	println("4) Retour")
-	choix = getNumericResponse("Votre choix : ", 4)
+	choix = getNumericResponse("Votre choix : ", 4, 1)
 
 	if(choix == 1)
 		global monGraphe = connexitéforte(monGraphe)
 	elseif(choix == 2)
 		global monGraphe = connexitéforte_produit(monGraphe)
 	elseif(choix == 3)
-		nbIter = getNumericResponse("Nombre d'itérations voulues (nous conseillons " * monGraphe.nv^2/100 * ") : ")
-		comparerFermeturesTransitives(nbIter)
+		nbIter = getNumericResponse("Nombre d'itérations de la fonction voulu (on conseille moins de " * string(10^(4 - round(log10(monGraphe.nv)))) * " ) : ", Inf, 0)
+		comparerFermeturesTransitives(nbIter, monGraphe)
 	end
 	menu()
 end
@@ -389,7 +433,7 @@ function menuCheminPlusCourt()
 	println("2) Voir la matrice de prédecésseurs")
 	println("3) Voir le chemin le plus court entre 2 sommets")
 	println("4) Retour")
-	choix = getNumericResponse("Votre choix : ", 4)
+	choix = getNumericResponse("Votre choix : ", 4, 1)
 
 	if(choix == 1)
 		println("Lancement de l'algorithme Roy-Floyd-Warshall...")
@@ -399,8 +443,8 @@ function menuCheminPlusCourt()
 	elseif(choix == 3)
 		println("Lancement de l'algorithme Roy-Floyd-Warshall...")
 		global monGraphe = RoyFloydWarshall(monGraphe)
-		from = getNumericResponse("Sommet de départ : ", monGraphe.nv)
-		to = getNumericResponse("Sommet d'arrivée : ", monGraphe.nv)
+		from = getNumericResponse("Sommet de départ : ", monGraphe.nv, 1)
+		to = getNumericResponse("Sommet d'arrivée : ", monGraphe.nv, 1)
 		println("Chemin le plus court : " * displayChemin(monGraphe, from, to))
 	end
 	menu()
